@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/hello.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="AdminBg">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="navbar-brand" href="index.html"><img src="images\HelloLogo.JPG"></a>
+      </li>
+      </ul>
+        
+    </div>
+</nav>
+<div class="container">
+  <h1 class="fntcol">Edit Admin Profile</h1>
+  <hr>
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-2">
+      <div class="text-center">
+        <img src="images/Admin.jpg" class="img-rounded" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        
+        <input type="file" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+    
+    <!-- edit form column -->
+    <div class="col-md-8 personal-info">
+      
+      <h1>Personal info</h1>
+      
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label fntcol">First name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" value="" placeholder="Sophia">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label fntcol">Last name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" value="" placeholder="Ebokam">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-lg-3 control-label fntcol">Email:</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" value="" placeholder="ebokamsomto@yahoo.com">
+          </div>
+        </div>  
+        <h1 class="fntcol">Authorizations</h1>
+        <hr>
+        
+        <div class= "col-addrecipe">
+
+       <button type="button" class="btn btn-primary  btn-block fntcol">View/Grant Users Request</button><br>
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="modal" data-target="#exampleModalLong">
+            Users
+            </button> 
+             
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <!-- left column -->
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary"><a href="adminprofile.html" > Save changes</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+
+        </div><br>
+        <div>
+
+         <button type="button" class="btn btn-primary  btn-block data-toggle="modal" data-target="#exampleModal2">Add New Books</button><br>
+       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel2">Tech World</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="container">
+                                                <h1>Science Library</h1>
+                                                <hr>
+                                                <div class="row">
+                                                      <!-- left column -->
+                                                    <div class="col-md-5">
+                                                        <div class="text-center">
+                                                            <img src="images/sciencebooks - small.jpg" class="img-rounded" alt="avatar">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                      
+                                            <div class="modal-body">
+                                                <div class="col-md-12 personal-info">
+                                                    <h1>Library of Technology </h1>
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Author:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Micheal Farade">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Title:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Tech world">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">About Book:</label>
+                                                            <div class="col-lg-8">
+                                                                <h5>This book section has all you need to know about science and technology, the early scientist as well as its evolution </h5>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+  </div>
+  </div>
+</div>
+    <footer class="bg-color footer1">
+      <div class="container">
+          <div class="row">
+            <div class="col text-center text-white">
+                <p>Designed by: Sophie &nbsp;&nbsp;&nbsp; © 2017</p>
+              </div>
+            </div>
+          </div>
+      </footer>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/designs.js"></script>
+
+    
+</body>
+</html>
