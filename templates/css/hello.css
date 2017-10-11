@@ -1,0 +1,68 @@
+
+.AdminBg{
+  background-image: url("../images/liberian2.jpg");
+  font-weight: bolder;
+  font: 30px arial, sans-serif;
+  color: white;
+
+}
+
+.bguserprof{
+  background-color: grey;
+  
+
+
+}
+.bgimg{
+  background-image: url("../images/bookshelfwallpaper.jpg");
+  color: white;
+  font-weight: bolder;
+  font: 20px arial, sans-serif;
+
+}
+
+.carousel-img {
+  width: 100%;
+  height: auto;
+}
+.center-align{
+  text-align: center;
+  
+}
+.footer1{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #000000;
+  color: #000F16;
+  padding: 10px 10px 0px 30px;
+}
+
+.footer{
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    background-color: #000000;
+    color: #000F16;
+    padding: 10px 10px 0px 30px;
+  }
+
+  .fntcol{
+    color: black;
+  }
+.home-wrapper{
+  background-image: url("../images/book3.jpg");
+  height: 600px;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  font: 15px arial, sans-serif;
+}
+.bold{
+  font: 40px arial, sans-serif;
+  color: #4B0082;
+}
+
+.spacing{
+  padding-top: 30px;
+}

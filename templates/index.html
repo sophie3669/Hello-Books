@@ -1,0 +1,589 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/hello.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="index.html"><img src="images\HelloLogo.JPG"></a>
+                </li>
+            </ul>
+            <ul>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">Signup</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item fa fa-user fa-lg fa-fw" href="UserSignup.html">&nbsp User</a><br><br>
+                        <a class="dropdown-item fa fa-user fa-lg fa-fw" href="AdminSignup.html">&nbsp Admin</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">close</a>
+                    </div>
+                    </div>
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item fa fa-user fa-lg fa-fw" href="Userlogin.html">&nbsp User</a><br><br>
+                        <a class="dropdown-item fa fa-user fa-lg fa-fw" href="AdminLogin.html">&nbsp Admin</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">close</a>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid home-wrapper">
+        <div class="container">
+            <h1 class="display-3">Welcome To The World Class BooksLibrary</h1>
+            <p class="lead"><i class="bold">where Future Leaders Gets Inspiration From</i></p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <div class= "input-group">
+                        <span class= "input-group-addon">
+                            <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Enter search input" aria-label="">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div>
+            <h3 class="center-align"> Favourite books</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="img-fluid" src="images/HistoryBooks.jpg" alt="Card image cap" width="537.5" height="357.52">
+                        <div class="card-block">
+                            <h3 class="card-title">History Books</h3>
+                            <p class="card-text">View the worlds history book</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <p>
+                                <a class="btn-floating">
+                                    <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong>
+                                    <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>
+                                    <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                                </a>
+                            </p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    View Details
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">History Books</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="container">
+                                            <h1>Worlds History</h1>
+                                            <hr>
+                                            <div class="row">
+                                                  <!-- left column -->
+                                                <div class="col-md-5">
+                                                    <div class="text-center">
+                                                        <img src="images/HistoryBooks - small.jpg" class="img-rounded" alt="avatar">
+                                                        
+                                                    </div>
+                                                </div>
+                                                  
+                                        <div class="modal-body">
+                                            <div class="col-md-12 personal-info">
+                                                <h1>World History </h1>
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Author:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="Sophia">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Title:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="Worlds History">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">About Book:</label>
+                                                        <div class="col-lg-8">
+                                                            <h5>This book section covers in details all The worlds history, how it came to be </h5>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            
+                                                    
+                       <div class="col-sm-6">
+                    <div class="card">
+                        <img class="img-fluid" src="images/sciencebooks.jpg" alt="Card image cap" width="537.5" height="357.52">
+                        <div class="card-block">
+                            <h3 class="card-title">Science books</h3>
+                            <p class="card-text">View the worlds book for science and technolgy.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <p>
+                                <a class="btn-floating">
+                                    <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong> &nbsp &nbsp
+                                    <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>&nbsp &nbsp
+                                    <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                                </a>
+                            </p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                                    View Details
+                                  </button>
+                                  
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel2">Tech World</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="container">
+                                                <h1>Science Library</h1>
+                                                <hr>
+                                                <div class="row">
+                                                      <!-- left column -->
+                                                    <div class="col-md-5">
+                                                        <div class="text-center">
+                                                            <img src="images/sciencebooks - small.jpg" class="img-rounded" alt="avatar">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                      
+                                            <div class="modal-body">
+                                                <div class="col-md-12 personal-info">
+                                                    <h1>Library of Technology </h1>
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Author:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Micheal Farade">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Title:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Tech world">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">About Book:</label>
+                                                            <div class="col-lg-8">
+                                                                <h5>This book section has all you need to know about science and technology, the early scientist as well as its evolution </h5>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <br>
+            <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <img class="img-fluid" src="images/ProgrammingBooks.png" alt="Card image cap" width="537.5" height="357.52">
+                            <div class="card-block">
+                                <h3 class="card-title">Programming Books</h3>
+                                <p class="card-text">View books on how to write and learn how to programme.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                                <p>
+                                    <a class="btn-floating">
+                                        <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong>&nbsp &nbsp
+                                        <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>&nbsp &nbsp
+                                        <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                                    </a>
+                                </p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+                                        View Details
+                                </button>
+                                      
+                                      <!-- Modal -->
+                                <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel3">view Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="container">
+                                            
+                                            <hr>
+                                            <div class="row">
+                                                  <!-- left column -->
+                                                <div class="col-md-5">
+                                                    <div class="text-center">
+                                                        <img src="images/ProgrammingBooks - small.png" class="img-rounded" alt="avatar">
+                                                        
+                                                    </div>
+                                                </div>
+                                                  
+                                        <div class="modal-body">
+                                            <div class="col-md-12 personal-info">
+                                                <h1>Programming for Beginners Guide </h1>
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Author:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="scoth.io">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Title:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="Beginners guide to programming">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">About Book:</label>
+                                                        <div class="col-lg-8">
+                                                            <h5>This contains in details all The worlds history, how it came to be </h5>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+                <div class="card">
+                    <img class="img-fluid" src="images/MotivationalBooks.png" alt="Card image cap" width="537.5" height="357.52">
+                    <div class="card-block">
+                        <h3 class="card-title">MotivationalBooks</h3>
+                        <p class="card-text">Find all books that motivates ones spirit.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <p>
+                            <a class="btn-floating">
+                                <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong>&nbsp &nbsp
+                                <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>&nbsp &nbsp
+                                <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                            </a>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4">
+                                View Details
+                        </button>
+                                
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel4">Motivational Books</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="container">
+                                        
+                                        <hr>
+                                        <div class="row">
+                                              <!-- left column -->
+                                            <div class="col-md-5">
+                                                <div class="text-center">
+                                                    <img src="images/MotivationalBooks - small.png" class="img-rounded" alt="avatar">
+                                                    
+                                                </div>
+                                            </div>
+                                              
+                                    <div class="modal-body">
+                                        <div class="col-md-12 personal-info">
+                                            
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-lg-4 control-label">Author:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" type="text" value="" placeholder="Annita Morgan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-4 control-label">Title:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" type="text" value="" placeholder="with Faith, All things are achievable">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-lg-4 control-label">About Book:</label>
+                                                    <div class="col-lg-8">
+                                                        <h5>This section contains words of motivation that can move and encourage the weak and trouble
+                                                            hearted
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="img-fluid" src="images/Departmentalbooks.jpg" alt="Card image cap" width="537.5" height="357.52">
+                    <div class="card-block">
+                        <h3 class="card-title">Departmental books</h3>
+                        <p class="card-text">Find all categories of book for different Departments.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <p>
+                            <a class="btn-floating">
+                                <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong>&nbsp &nbsp
+                                <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>&nbsp &nbsp
+                                <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                            </a>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
+                                View Details
+                                </button>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Departmental books</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="container">
+                                        
+                                            <hr>
+                                            <div class="row">
+                                                  <!-- left column -->
+                                                <div class="col-md-5">
+                                                    <div class="text-center">
+                                                        <img src="images/Departmentalbooks - small.jpg" class="img-rounded" alt="avatar">
+                                                        
+                                                    </div>
+                                                </div>
+                                                  
+                                        <div class="modal-body">
+                                            <div class="col-md-12 personal-info">
+                                                <h1>Find all books for different Departments </h1>
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Author:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="Daniel Spar..1932">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">Title:</label>
+                                                        <div class="col-lg-8">
+                                                            <input class="form-control" type="text" value="" placeholder="Departmental Books">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">About Book:</label>
+                                                        <div class="col-lg-8">
+                                                            <h5>This consist of different lecture textbooks for different departments. </h5>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="img-fluid" src="images/recipebooks.jpg" alt="Card image cap" width="537.5" height="357.52">
+                        <div class="card-block">
+                            <h3 class="card-title">More-Recipe</h3>
+                            <p class="card-text">find the world best recipe details here</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <p>
+                                <a class="btn-floating">
+                                    <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i><strong>158</strong>&nbsp &nbsp
+                                    <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i><strong>28</strong>&nbsp &nbsp
+                                    <i class="fa fa-commenting-o" aria-hidden="true"></i><strong>15</strong>
+                                </a>
+                            </p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
+                                    View Details
+                            </button>
+                                    
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel6">More-Recipe</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="container">
+                                                
+                                                <hr>
+                                                <div class="row">
+                                                      <!-- left column -->
+                                                    <div class="col-md-5">
+                                                        <div class="text-center">
+                                                            <img src="images/recipebooks - small.jpg" class="img-rounded" alt="avatar">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                      
+                                            <div class="modal-body">
+                                                <div class="col-md-12 personal-info">
+                                                    <h1>World History </h1>
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Author:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Fess Delight Catering  Services">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">Title:</label>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="text" value="" placeholder="Worlds More-Recipe">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-lg-4 control-label">About Book:</label>
+                                                            <div class="col-lg-8">
+                                                                <h5>This contains series of books with details of all recipe of different kinds around the world</h5>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </section>
+
+
+
+    <footer class="bg-color footer">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center text-white">
+                    <p>Designed by: Sophie &nbsp;&nbsp;&nbsp; © 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src=""></script>
+
+</body>
+</html>
