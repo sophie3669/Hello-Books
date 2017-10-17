@@ -6,11 +6,17 @@ const db = {
         "username": "sophie",
         "password": "12345se",
         "email" : "ebokamsomto@yahoo.com"
-        }
+        },
+        {
+          "id": 2,
+          "username": "Kene",
+          "password": "12345se",
+          "email" : "ebokamsomto@yahoo.com"
+          }
 ]
 
 
 
 
 }
-  export {db}
+  export default db;

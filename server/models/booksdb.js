@@ -1,4 +1,4 @@
-const db = {
+const books = {
     
     booksdb:[
         {
@@ -7,11 +7,11 @@ const db = {
             "description": "Talks about how strong your faith needs to be",
             "author" : "chris yemi",
             "quantity": 20,
-            "publishyear": 2014     
+            "publishYear": 2014     
 
         }
            
     ]
 }
 
-export {db}
+export default books;

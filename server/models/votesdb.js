@@ -10,3 +10,4 @@ const db = {
               
    }]
 }
+export {db}

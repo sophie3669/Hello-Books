@@ -1,13 +1,9 @@
-let express = require('express');
-const admin = require('../controllers/admincontroller');
-const adminuser = admin.admincontroller;
+import express from 'express';
+import Book from '../controllers/admincontroller';
+
 const router = express.Router();
+const myBook = new Book();
 
-router.post('/api/books', adminuser.addbook);
+router.post('/api/v1/books', myBook.addbook);
 
-
-
-
-
-
-module.export;
+export default router;
