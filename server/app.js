@@ -1,16 +1,15 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-// let express = require('express');
-// let logger = require ('morgan');
-// let bodyParser= require('body-parser');
 import  router from './routes/admin';
+import  bookRouter from './routes/books';
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', router);
+app.use('/', bookRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send({

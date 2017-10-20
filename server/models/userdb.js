@@ -1,19 +1,19 @@
 const db = {
     
-    userdb:[
+    userDb:[
         
         {
         "id": 1,
         "username": "Damola",
         "password": "12345da",
-        "emailaddress" : "damiekunsho@yahoo.com",
+        "email" : "damiekunsho@yahoo.com",
         "favorites": [
             {
             "id": 1,
-            "bookname":  "living in faith",
+            "bookName":  "living in faith",
              }
            ]
         }
     ]
 }
-export {db}
+export default db;

@@ -1,6 +1,6 @@
 const db = {
 
-    admindb:[
+    adminDb:[
         {
         "id": 1,
         "username": "sophie",

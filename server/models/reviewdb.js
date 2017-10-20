@@ -1,9 +1,9 @@
 const db = {
     
-    reviewdb:[
+    reviewDb:[
         {
-        "bookid": 1,
-        "bookname": "living in faith",
+        "bookId": 1,
+        "bookName": "living in faith",
         "username": "Damola",
         "review":"very nice article indeed"
               
@@ -11,4 +11,4 @@ const db = {
     ]
 }
 
-export {db}
+export default db;
