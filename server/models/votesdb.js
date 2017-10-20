@@ -1,13 +1,13 @@
 const db = {
     
-    votesdb:[{
-        "bookid": 1,
-        "bookname": "living in faith",
-        "userid": "4",
+    votesDb:[{
+        "bookId": 1,
+        "bookName": "living in faith",
+        "userId": "4",
         "username" : "Damola",
-        "upvote": 10,
-        "downvotes": 20
+        "upVote": 10,
+        "downVotes": 20
               
    }]
 }
-export {db}
+export default db;

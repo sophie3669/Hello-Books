@@ -1,9 +1,10 @@
 import express from 'express';
-import Book from '../controllers/admincontroller';
+import Admin from '../controllers/adminController';
 
 const router = express.Router();
-const myBook = new Book();
+const sysAdmin = new Admin();
 
-router.post('/api/v1/books', myBook.addbook);
+router.post('/api/v1/books', sysAdmin.addBook);
+router.put('/api/v1/books/:bookId', sysAdmin.modifyBook);
 
 export default router;

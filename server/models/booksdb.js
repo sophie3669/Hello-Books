@@ -1,9 +1,9 @@
 const books = {
     
-    booksdb:[
+    booksDb:[
         {
-            "id": 1,
-            "bookname": "living in faith",
+            "bookId": 1,
+            "bookName": "living in faith",
             "description": "Talks about how strong your faith needs to be",
             "author" : "chris yemi",
             "quantity": 20,
