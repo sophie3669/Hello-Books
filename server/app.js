@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import  router from './routes/admin';
 import  bookRouter from './routes/books';
+import userRouter from './routes/user';
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', router);
 app.use('/', bookRouter);
+app.use('/', userRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send({

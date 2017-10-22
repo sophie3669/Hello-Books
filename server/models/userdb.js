@@ -1,4 +1,4 @@
-const db = {
+const user = {
     
     userDb:[
         
@@ -13,7 +13,19 @@ const db = {
             "bookName":  "living in faith",
              }
            ]
-        }
+        },
+        {
+            "id": 2,
+            "username": "Kene",
+            "password": "12345da",
+            "email" : "kene@yahoo.com",
+            "favorites": [
+                {
+                "id": 1,
+                "bookName":  "living in faith",
+                 }
+               ]
+            }
     ]
 }
-export default db;
+export default user;
