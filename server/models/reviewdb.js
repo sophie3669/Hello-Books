@@ -1,14 +1,14 @@
-const db = {
+const reviews = {
     
     reviewDb:[
         {
+        "reviewId":1,    
         "bookId": 1,
-        "bookName": "living in faith",
-        "username": "Damola",
+        "userId": 1,
         "review":"very nice article indeed"
               
         }
     ]
 }
 
-export default db;
+export default reviews;
