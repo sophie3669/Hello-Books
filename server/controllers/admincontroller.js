@@ -1,5 +1,7 @@
 import db from '../models/adminDb';
 import books from '../models/booksDb';
+import user from '../models/userDb';
+import brwdBooks from '../models/brwdBooksDb';
 
 /**
   * @class Admin
@@ -102,7 +104,133 @@ import books from '../models/booksDb';
     
   }
  }
+
+ acceptBrwdBooks(req,res){
+  let foundBookId = false;
+  let foundUserId = false;
+  const {adminId, dateBorrowed, dateToReturn } = req.body;
+  const bookId = req.params.bookId;
+  const userId = req.params.userId;
+  if(Admin.adminDb.filter(item => item.adminId === parseInt(adminId,10)).length === 1){
+if(user.userDb.filter(item => item.userId === parseInt(userId,10)).length === 1){
+  if(books.booksDb.filter(item => item.bookId === parseInt(bookId, 10)).length === 1) {
+      if(brwdBooks.brwdBooksDb.filter(item => item.userId === parseInt(userId,10)).length === 1){
+        if(books.booksDb.quantity >= 1){
+       if (typeof dateBorrowed === 'string' &&
+            typeof dateToReturn === 'string' ) {
+              const newbrwId = brwdBooks.brwdBooksDb.length + 1;
+              const newBrwdBook = brwdBooks.brwdBooksDb.push({
+                brwId: newbrwId,
+                bookId,
+                userId,
+                dateBorrowed,
+                dateToReturn,
+                brwApproval: "Approved",
+                rtnApproval: "yet to be returned"
+    
+              });
+        foundBookId = true;
+        foundUserId = true;
+        res.status(201).send({
+         message: 'book accepted to be borrowed',
+         brwdBooks: brwdBooks.brwdBooksDb
+          
+         });
+        } else {
+          res.status(400).send({
+                message: 'kindly ensure all inputs are strings'
+          });
+        }
+
+      } else {
+        res.status(401).send({
+              message: 'book not available to be borrowed, please make another request'
+        });
+      }
+
+      } else {
+        res.status(401).send({
+              message: 'Sorry you must first return borrowed book before making another request'
+        });
+      }
+         
+       } else {
+       res.status(400).send({
+        message: ' No book of such exists!'
+       });
+     }
+        } 
+     else {
+         res.status(403).send({
+       message: 'you are not authorised to borrow a book, kindly register to gain priviledge!'
+    });
+    
+  }
+  } else {
+  res.status(403).send({
+   message: 'Only System Administrator can Approve requests'
+  });
 }
+   
+ }
+
+ acceptRtndBook(req,res){
+  let foundBookId = false;
+  let foundUserId = false;
+  const {adminId,dateReturned} = req.body;
+  const bookId = req.params.bookId;
+  const userId = req.params.userId;
+
+  if(db.adminDb.filter(item => item.adminId === parseInt(adminId, 10)).length === 1) {
+  if(brwdBooks.brwdBooksDb.filter(item => item.bookId === parseInt(bookId, 10)).length === 1) {
+      if(brwdBooks.brwdBooksDb.filter(item => item.userId === parseInt(userId,10)).length === 1){
+          if (typeof dateBorrowed === 'string'){
+          brwdBooks.brwdBooksDb.dateReturned = dateReturned;
+          brwdBooks.brwdBooksDb.rtnApproval = "Approved";
+          brwdBooks.brwdBooksDb.returnStatus = "returned";
+          
+        
+        foundBookId = true;
+        foundUserId = true;
+        res.status(201).send({
+         message: 'book accepted to be borrowed',
+         brwdBooks: brwdBooks.brwdBooksDb
+          
+         });
+        } else {
+          res.status(400).send({
+                message: 'kindly ensure date has a string value'
+          });
+        }
+
+      
+      } else {
+        res.status(401).send({
+              message: 'Sorry you might have mada a mistake, this book does not belong here'
+        });
+      }
+         
+       } else {
+       res.status(400).send({
+        message: ' No book of such exists!'
+       });
+     }
+        
+     
+    } else {
+      res.status(400).send({
+       message: ' You do not have the right to Approve, contact our system admin!'
+      });
+    }
+       
+    
+}
+
+
+
+
+ }
+
 
 
 
