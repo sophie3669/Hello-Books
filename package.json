@@ -4,7 +4,10 @@
   "description": "Hello-Books is a simple application that helps manage a library and its processes like stocking, tracking and renting books. \r With this application users are able to find and rent books. The application also has an admin section where the admin can do things \r like add books, delete books, increase the quantity of a book etc.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/app.js --exec babel-node",
+    "start": "node build/app.js",
+    "postinstall": "[ \"$NODE_ENV\" != production ] && exit 0; npm run build",
+    "build": "babel -d ./build ./server -s --copy-files",
+    "start-dev": "nodemon server/app.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
