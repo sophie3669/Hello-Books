@@ -4,14 +4,45 @@ import bodyParser from 'body-parser';
 import  router from './routes/admin';
 import  bookRouter from './routes/books';
 import userRouter from './routes/user';
+import swaggerJSDoc from 'swagger-jsdoc';
+
 
 const app = express();
+
+var swaggerDefinition = {
+	info: {
+	  title: 'Node Swagger API',
+	  version: '1.0.0',
+	  description: 'Demonstrating how to describe a RESTful API with Swagger',
+	},
+	host: 'localhost:3000',
+	basePath: '/',
+  };
+  
+  // options for the swagger docs
+  var options = {
+	// import swaggerDefinitions
+	swaggerDefinition: swaggerDefinition,
+	// path to the API docs
+	apis: ['../routes/*.js'],
+  };
+  
+  // initialize swagger-jsdoc
+  const swaggerSpec = swaggerJSDoc(options);
+
+  app.get('/swagger.json', function(req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	res.send(swaggerSpec);
+  });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', router);
 app.use('/', bookRouter);
 app.use('/', userRouter);
+app.use('/getBooks', bookRouter);
+app.use('/addBooks', router);
+
 
 app.get('/', (req, res) => {
     res.status(200).send({
@@ -31,4 +62,4 @@ app.listen(3000, () => {
 	console.log("Listening to port 3000");
 });
 
-
+export default app;

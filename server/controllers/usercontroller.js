@@ -42,6 +42,7 @@ import brwdBooks from '../models/brwdBooksDb';
         }
         if ((found === false) ) {
             if ((bookQty >= 1)) {
+                
                 const newbrwId = brwdBooks.brwdBooksDb.length + 1;
                 const newBrwdBook = brwdBooks.brwdBooksDb.push({
                     brwId: newbrwId,
@@ -54,10 +55,11 @@ import brwdBooks from '../models/brwdBooksDb';
                     returnStatus: "yet to be returned"
         
                 });
-                // books.booksDb[bookShelf].quantity -= 1;
+                books.booksDb[bookShelf].quantity -= 1;
                 res.status(200).send({
                     newBrwdBook: brwdBooks.brwdBooksDb,
-                    message: 'Success'
+                    message: 'Success',
+                    remquantity: bookQty
                  });
             } else {
                 res.status(401).send({

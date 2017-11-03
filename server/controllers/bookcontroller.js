@@ -1,6 +1,8 @@
 import books from '../models/booksDb';
 import user from '../models/userDb';
 import reviews from '../models/reviewDb';
+import favorites from '../models/favoritesDb';
+import votes from '../models/votesDb';
 
 /**
   * @class Books
@@ -64,51 +66,107 @@ import reviews from '../models/reviewDb';
        }
 
        makeFavorites(req, res){
-        const bookId = req.params.bookId;
-        const userId = req.params.userId;
+        const bookId = parseInt(req.params.bookId, 10);
+        const userId = parseInt(req.params.userId, 10);
+        let found = false;
         
-        if(db.adminDb.filter(item => item.id === parseInt(id, 10)).length === 1) {
-         if (bookName && description && author && quantity && publishYear) { 
-           if (typeof bookName === 'string' && typeof description === 'string' &&
-             typeof author === 'string' && typeof quantity === 'string' &&
-             typeof publishYear === 'string') {
-                const newId = books.booksDb.length + 1;
-                const newBook = books.booksDb.push({
-                  bookId: newId,
-                  bookName,
-                  description,
-                  author,
-                  quantity,
-                  publishYear
+        if(user.userDb.filter(item => item.id === parseInt(userId,10)).length === 1){ 
+          if(books.booksDb.filter(item => item.bookId === parseInt(bookId, 10)).length === 1) {
+           if((favorites.favoritesDb.some(item => item.usersId === userId)) && 
+           (favorites.favoritesDb.some(item => item.booksId === bookId))){
+                 
+              found = true;
+                 return res.status(409).send({
+                  message: 'Book already favorited by you'
                 });
-                  if (newBook) {
-                    res.status(201).send({
-                    message: 'book added by Admin user was successfully',
-                    
+              }
+              else{
+                const newfavouriteId = favorites.favoritesDb.length + 1;
+                const newfavorite = favorites.favoritesDb.push({
+
+                  id : newfavouriteId,
+                  bookId,
+                  userId
+                });
+
+                   if(newfavorite){
+                    return res.status(200).send({
+                      favorites: newfavorite,
+                      message: 'Book successfully added to favorite',
+                      details: favorites.favoritesDb
                     });
-                  } else {
-                    res.status(500).send({
-                          message: 'failed to create new, try again'
-                    });
+                 
                   }
-               
-             } else {
-             res.status(400).send({
-              message: ' data must be in strings!'
-             });
-           }
-              } else {
-            res.status(400).send({
-              message: 'Incomplete book data!'
-             
-            });
-          }
+                  
+                  else {
+              
+                  return res.status(409).send({
+                    message: 'Internal Server Error'
+                    
+                  });
+                }
+
+              }
+            } else {
+              res.status(400).send({
+            message: 'No such book exists!'
+        });
+        
+      }
+
+
        } else {
                res.status(400).send({
-             message: 'you are not authorised to add a book, kindly contact your system administrator!'
+             message: 'you are not an authorised user!'
           });
           
         };
       }
+
+      getUserFavourites(req, res){
+        
+        const userId = parseInt(req.params.userId, 10);
+        let count = 0;
+        if(user.userDb.filter(item => item.id === parseInt(userId,10)).length === 1){
+          for(let i = 0; i < favorites.favoritesDb.length; i++) {
+          
+            if(favorites.favoritesDb[i].usersId === userId){
+              return res.status(200).send({
+                //favorites: newfavorite,
+                message: 'record found',
+                userdetails: favorites.favoritesDb[i]
+                
+              });
+              
+           
+            }
+            else {
+             return res.status(400).send({
+            message: 'You have no favorite record!'
+         });
+       }
+    }
+ }
+           else {
+          return  res.status(400).send({
+          message: 'You are not an authorised user!'
+       });
+
+
+      }
      
   }
+
+   getUpvotes(req, res){
+      return res.status(200).send({
+     
+      votesDetails: votes.votesDb
+      
+    });
+      
+
+  }
+  
+
+  
+}

@@ -1,3 +1,7 @@
+/**
+ * user routes
+ */
+
 import express from 'express';
 import UserPriviledge from '../controllers/userController';
 
