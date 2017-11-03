@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../server/routes/index.js"],"names":["router","bookRouter"],"mappings":";;;;;;AAAA;;;;AACA;;;;;;kBAEe;AACXA,2BADW;AAEXC;AAFW,C","file":"index.js","sourcesContent":["import  router from './admin';\r\nimport bookRouter from './books';\r\n\r\nexport default {\r\n    router,\r\n    bookRouter\r\n};"]}

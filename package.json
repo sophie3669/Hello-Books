@@ -4,9 +4,12 @@
   "description": "application that helps manage a library and its processes like stocking,",
   "main": "index.js",
   "scripts": {
+
     "start": "nodemon server/app.js --exec babel-node",
     "test2": "mocha server/test --timeout 10000",
     "test": "mocha -r babel-register -r babel-polyfill server/test"
+
+
   },
   "repository": {
     "type": "git",

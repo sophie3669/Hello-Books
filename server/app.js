@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import  router from './routes/admin';
 import  bookRouter from './routes/books';
 import userRouter from './routes/user';
+
 import swaggerJSDoc from 'swagger-jsdoc';
+
 
 
 const app = express();
@@ -40,8 +42,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', router);
 app.use('/', bookRouter);
 app.use('/', userRouter);
+
 app.use('/getBooks', bookRouter);
 app.use('/addBooks', router);
+
 
 
 app.get('/', (req, res) => {

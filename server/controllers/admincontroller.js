@@ -2,6 +2,7 @@ import db from '../models/adminDb';
 import books from '../models/booksDb';
 import user from '../models/userDb';
 import brwdBooks from '../models/brwdBooksDb';
+
 // export const addBook = (req, res)=>{
 //   const { id, bookName, description, author, quantity, publishYear } = req.body;
 //       if(db.adminDb.filter(item => item.id === parseInt(id, 10)).length === 1) {
@@ -102,6 +103,7 @@ import brwdBooks from '../models/brwdBooksDb';
 
 
 //}
+
 
 /**
   * @class Admin
@@ -206,6 +208,7 @@ import brwdBooks from '../models/brwdBooksDb';
   }
  }
 
+
  acceptBorrowedBooks(req,res){
   let foundBookId = false;
   let foundUserId = false;
@@ -257,47 +260,36 @@ import brwdBooks from '../models/brwdBooksDb';
   res.status(403).send({
       message: 'you are not authorised to Approve'
   }); 
-}
 
-}
-
-  
 
  acceptRtndBook(req,res){
   let foundBookId = false;
   let foundUserId = false;
-  let borrowerId = 0;
-  const id = parseInt(req.body.id, 10);
-  const bookId = parseInt(req.params.bookId, 10);
-  const userId = parseInt(req.params.userId, 10);
-  let found = false;
-  let borrowerShelf = 0;
+  const {adminId,dateReturned} = req.body;
+  const bookId = req.params.bookId;
+  const userId = req.params.userId;
 
-  if(db.adminDb.filter(item => item.id === parseInt(id, 10)).length === 1) {
+  if(db.adminDb.filter(item => item.adminId === parseInt(adminId, 10)).length === 1) {
   if(brwdBooks.brwdBooksDb.filter(item => item.bookId === parseInt(bookId, 10)).length === 1) {
       if(brwdBooks.brwdBooksDb.filter(item => item.userId === parseInt(userId,10)).length === 1){
+          if (typeof dateBorrowed === 'string'){
+          brwdBooks.brwdBooksDb.dateReturned = dateReturned;
+          brwdBooks.brwdBooksDb.rtnApproval = "Approved";
+          brwdBooks.brwdBooksDb.returnStatus = "returned";
+          
         
-        for (let i = 0; i < brwdBooks.brwdBooksDb.length; i+=1) {
-          if ((brwdBooks.brwdBooksDb[i].bookId === bookId &&
-            brwdBooks.brwdBooksDb[i].userId === userId) && (brwdBooks.brwdBooksDb[i].rtnApproval !== 'Approved')) {
-            borrowerId = brwdBooks.brwdBooksDb[i].brwId;
-            borrowerShelf = i;
-            found = true;
-            break;
-          }
+        foundBookId = true;
+        foundUserId = true;
+        res.status(201).send({
+         message: 'book accepted to be borrowed',
+         brwdBooks: brwdBooks.brwdBooksDb
+          
+         });
+        } else {
+          res.status(400).send({
+                message: 'kindly ensure date has a string value'
+          });
         }
-        
-        if (found === true) {
-          brwdBooks.brwdBooksDb[borrowerShelf].rtnApproval = "Approved";
-          return res.status(200).send({
-            approval: brwdBooks.brwdBooksDb[borrowerShelf],
-            message: 'confirmation successful'
-          })
-        }
-        res.status(404).send({
-          message: ' No pending approval found for this request!'
-       });
-      
 
       
       } else {
@@ -318,9 +310,9 @@ import brwdBooks from '../models/brwdBooksDb';
        message: ' You do not have the right to Approve, contact our system admin!'
       });
     }
-  }    
+       
+    
 
- }
 
 
 

@@ -1,12 +1,15 @@
+
 /**
  * 
  * Favorites dummy database
  */
+
 const favorites = {
     
        favoritesDb:[
         {
             "Id": 1,
+
             "booksId": 2,
             "usersId": 2
 
@@ -25,6 +28,7 @@ const favorites = {
         }
         
            
+
            
     ]
 }
