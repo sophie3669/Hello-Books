@@ -2,6 +2,10 @@ import books from '../models/booksDb';
 import user from '../models/userDb';
 import reviews from '../models/reviewDb';
 
+import favorites from '../models/favoritesDb';
+import votes from '../models/votesDb';
+
+
 /**
   * @class Books
   */
@@ -64,6 +68,59 @@ import reviews from '../models/reviewDb';
        }
 
        makeFavorites(req, res){
+        const bookId = parseInt(req.params.bookId, 10);
+        const userId = parseInt(req.params.userId, 10);
+        let found = false;
+        
+        if(user.userDb.filter(item => item.id === parseInt(userId,10)).length === 1){ 
+          if(books.booksDb.filter(item => item.bookId === parseInt(bookId, 10)).length === 1) {
+           if((favorites.favoritesDb.some(item => item.usersId === userId)) && 
+           (favorites.favoritesDb.some(item => item.booksId === bookId))){
+                 
+              found = true;
+                 return res.status(409).send({
+                  message: 'Book already favorited by you'
+                });
+              }
+              else{
+                const newfavouriteId = favorites.favoritesDb.length + 1;
+                const newfavorite = favorites.favoritesDb.push({
+
+                  id : newfavouriteId,
+                  bookId,
+                  userId
+                });
+
+                   if(newfavorite){
+                    return res.status(200).send({
+                      favorites: newfavorite,
+                      message: 'Book successfully added to favorite',
+                      details: favorites.favoritesDb
+                    });
+                 
+                  }
+                  
+                  else {
+              
+                  return res.status(409).send({
+                    message: 'Internal Server Error'
+                    
+                  });
+                }
+
+              }
+            } else {
+              res.status(400).send({
+            message: 'No such book exists!'
+        });
+        
+      }
+
+
+       } else {
+               res.status(400).send({
+             message: 'you are not an authorised user!'
+
         const bookId = req.params.bookId;
         const userId = req.params.userId;
         
@@ -110,5 +167,53 @@ import reviews from '../models/reviewDb';
           
         };
       }
+
+
+      getUserFavourites(req, res){
+        
+        const userId = parseInt(req.params.userId, 10);
+        let count = 0;
+        if(user.userDb.filter(item => item.id === parseInt(userId,10)).length === 1){
+          for(let i = 0; i < favorites.favoritesDb.length; i++) {
+          
+            if(favorites.favoritesDb[i].usersId === userId){
+              return res.status(200).send({
+                //favorites: newfavorite,
+                message: 'record found',
+                userdetails: favorites.favoritesDb[i]
+                
+              });
+              
+           
+            }
+            else {
+             return res.status(400).send({
+            message: 'You have no favorite record!'
+         });
+       }
+    }
+ }
+           else {
+          return  res.status(400).send({
+          message: 'You are not an authorised user!'
+       });
+
+
+      }
      
   }
+
+   getUpvotes(req, res){
+      return res.status(200).send({
+     
+      votesDetails: votes.votesDb
+      
+    });
+      
+
+  }
+  
+
+  
+}
+

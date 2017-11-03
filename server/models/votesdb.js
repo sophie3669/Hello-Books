@@ -1,13 +1,25 @@
-const db = {
+/**
+ * book votes dummy database
+ */
+const votes = {
     
-    votesDb:[{
+    votesDb:[
+        {
         "bookId": 1,
-        "bookName": "living in faith",
-        "userId": "4",
-        "username" : "Damola",
-        "upVote": 10,
+        //"userId": "4",
+        "upVote": 1,
         "downVotes": 20
               
-   }]
+   },
+   {
+    "bookId": 1,
+   // "userId": "",
+    "upVote": 5,
+    "downVotes": 20
+          
+  },
+
+ ]
+
 }
-export default db;
+export default votes;

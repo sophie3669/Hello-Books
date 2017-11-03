@@ -1,3 +1,7 @@
+/**
+ * Admin Dummy Database
+ * 
+ */
 const db = {
 
     adminDb:[

@@ -1,3 +1,6 @@
+/**
+ * books dummy database
+ */
 const books = {
     
     booksDb:[
