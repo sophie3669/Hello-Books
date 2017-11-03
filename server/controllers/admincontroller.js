@@ -260,6 +260,8 @@ import brwdBooks from '../models/brwdBooksDb';
   res.status(403).send({
       message: 'you are not authorised to Approve'
   }); 
+}
+ }
 
 
  acceptRtndBook(req,res){
@@ -310,6 +312,8 @@ import brwdBooks from '../models/brwdBooksDb';
        message: ' You do not have the right to Approve, contact our system admin!'
       });
     }
+  }
+}
        
     
 
