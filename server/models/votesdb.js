@@ -12,7 +12,7 @@ const votes = {
               
    },
    {
-    "bookId": 1,
+    "bookId": 2,
    // "userId": "",
     "upVote": 5,
     "downVotes": 20

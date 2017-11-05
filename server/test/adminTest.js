@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 let admin = require('../models/adminDb');
+let Book = require('../models/booksDb');
 
 //Require the dev-dependencies
 let chai = require('chai');
@@ -35,3 +36,30 @@ describe('/POST book', () => {
     });
 
 });
+/*
+  * Test the /PUT/:id route
+  */
+  describe('/api/v1/books/:bookId', () => {
+    it('it should UPDATE a book given the id', (done) => {
+        let book = {
+            bookName: "The Lord of the Rings",
+            description: "descibes the ays of the lords",
+            author: "J.R.R. Tolkien",
+            quantity:12,
+            publishYear: 1954
+           
+        }
+      //((err, book) => {
+              chai.request(server)
+              .put('/api/v1/books/' + book.id)
+              .send(book)
+              .end((err, res) => {
+                  res.should.have.status(403);
+                  res.body.should.be.a('object');
+                 // res.body.should.have.property('quantity').eql('12');
+                  //res.body.book.should.have.property('year').eql(1954);
+                done();
+              });
+        });
+    });
+//});

@@ -1,10 +1,8 @@
 import books from '../models/booksDb';
 import user from '../models/userDb';
 import reviews from '../models/reviewDb';
-
 import favorites from '../models/favoritesDb';
 import votes from '../models/votesDb';
-
 
 /**
   * @class Books
@@ -120,54 +118,10 @@ import votes from '../models/votesDb';
        } else {
                res.status(400).send({
              message: 'you are not an authorised user!'
-
-        const bookId = req.params.bookId;
-        const userId = req.params.userId;
-        
-        if(db.adminDb.filter(item => item.id === parseInt(id, 10)).length === 1) {
-         if (bookName && description && author && quantity && publishYear) { 
-           if (typeof bookName === 'string' && typeof description === 'string' &&
-             typeof author === 'string' && typeof quantity === 'string' &&
-             typeof publishYear === 'string') {
-                const newId = books.booksDb.length + 1;
-                const newBook = books.booksDb.push({
-                  bookId: newId,
-                  bookName,
-                  description,
-                  author,
-                  quantity,
-                  publishYear
-                });
-                  if (newBook) {
-                    res.status(201).send({
-                    message: 'book added by Admin user was successfully',
-                    
-                    });
-                  } else {
-                    res.status(500).send({
-                          message: 'failed to create new, try again'
-                    });
-                  }
-               
-             } else {
-             res.status(400).send({
-              message: ' data must be in strings!'
-             });
-           }
-              } else {
-            res.status(400).send({
-              message: 'Incomplete book data!'
-             
-            });
-          }
-       } else {
-               res.status(400).send({
-             message: 'you are not authorised to add a book, kindly contact your system administrator!'
           });
           
         };
       }
-
 
       getUserFavourites(req, res){
         
@@ -204,16 +158,28 @@ import votes from '../models/votesDb';
   }
 
    getUpvotes(req, res){
-      return res.status(200).send({
+
+    let sortedVotes= [];
+    let vote = [];    
+    for(let i = 0; i < votes.votesDb.length; i++){
+       let votecount = votes.votesDb[i].upVote;
+       vote = votes.votesDb[i].push;
+
      
-      votesDetails: votes.votesDb
+      console.log(vote);
+      break;
+      //let sortedVotes= vote.sort(function(a,b){
+       // return b-a;
+
       
-    });
       
+      //})
+    }
+    
+      
+    
 
   }
   
-
-  
 }
-
+  

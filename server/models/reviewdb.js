@@ -1,4 +1,3 @@
-
 /**
  * book reviews dummy database
  */

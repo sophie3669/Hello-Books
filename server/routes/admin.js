@@ -42,9 +42,66 @@ const sysAdmin = new Admin();
 *           $ref: '#/definitions/addBooks'
 */
 router.post('/api/v1/books', sysAdmin.addBook);
+
+/**
+ * @swagger
+ * /api/v1/books/:bookId
+ *   put:
+ *     tags: books
+ *     description: Updates an existing book
+ *     produces: application/json
+ *     parameters:
+ *       name: book
+ *       in: body
+ *       description: Fields for the books resource
+ *       schema:
+ *         type: array
+ *         $ref: '#/definitions/books'
+ *     responses:
+ *       200:
+ *         description: Successfully updated
+ */
 router.put('/api/v1/books/:bookId', sysAdmin.modifyBook);
 
+
+/**
+ * @swagger
+ * /api/v1/users/:userId/borrow/:bookId
+ *   put:
+ *     tags: books
+ *     description: Updates the status of a borrowed book
+ *     produces: application/json
+ *     parameters:
+ *       name: books
+ *       in: body
+ *       description: Fields for the borrowed book resource
+ *       schema:
+ *         type: array
+ *         $ref: '#/definitions/books'
+ *     responses:
+ *       200:
+ *         description: Successfully updated
+ */
 router.put('/api/v1/users/:userId/borrow/:bookId',sysAdmin.acceptBorrowedBooks);
+
+/**
+ * @swagger
+ * /api/v1/users/:userId/return/:bookId
+ *   put:
+ *     tags: books
+ *     description: Updates the status of a returned book
+ *     produces: application/json
+ *     parameters:
+ *       name: books
+ *       in: body
+ *       description: Fields for the borrowed book resource
+ *       schema:
+ *         type: array
+ *         $ref: '#/definitions/books'
+ *     responses:
+ *       200:
+ *         description: Successfully updated
+ */
 router.put('/api/v1/users/:userId/return/:bookId', sysAdmin.acceptRtndBook);
 
 
