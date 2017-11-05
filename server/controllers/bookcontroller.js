@@ -158,15 +158,28 @@ import votes from '../models/votesDb';
   }
 
    getUpvotes(req, res){
-      return res.status(200).send({
+
+    let sortedVotes= [];
+    let vote = [];    
+    for(let i = 0; i < votes.votesDb.length; i++){
+       let votecount = votes.votesDb[i].upVote;
+       vote = votes.votesDb[i].push;
+
      
-      votesDetails: votes.votesDb
+      console.log(vote);
+      break;
+      //let sortedVotes= vote.sort(function(a,b){
+       // return b-a;
+
       
-    });
       
+      //})
+    }
+    
+      
+    
 
   }
   
-
-  
 }
+  
