@@ -1,11 +1,24 @@
 import express from 'express';
 import morgan from 'morgan';
+import logger from 'morgan';
 import bodyParser from 'body-parser';
-import  router from './routes/admin';
-import  bookRouter from './routes/books';
-import userRouter from './routes/user';
-
 import swaggerJSDoc from 'swagger-jsdoc';
+/**
+ * Postgres database imports
+ */
+//import  router from './routes/admin';
+//import  bookRouter from './routes/books';
+//import userRouter from './routes/userRouter';
+
+/**
+ * dummyDb imports
+ */
+import  router from './dummyRoutes/admin';
+import  bookRouter from './dummyRoutes/books';
+import userRouter from './dummyRoutes/user';
+
+
+
 
 
 
