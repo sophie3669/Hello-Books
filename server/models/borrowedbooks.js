@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var reviews = sequelize.define('reviews', {
+  var BorrowedBooks = sequelize.define('BorrowedBooks', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     bookId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
-    review: DataTypes.TEXT
+    borrowDate: DataTypes.DATE,
+    returnDate: DataTypes.DATE,
+    borrowApproval: DataTypes.STRING,
+    returnApproval: DataTypes.STRING,
+    returnStatus: DataTypes.STRING,
+    dateReturned: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
@@ -16,5 +21,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return reviews;
+  return BorrowedBooks;
 };

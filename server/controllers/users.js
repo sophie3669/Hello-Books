@@ -1,32 +1,43 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from '../models';
+import { Users } from '../models';
 
-const User = db.users;
-const secret = 'iamsophie';
+require('dotenv').config();
+/**
+ * @class UserController
+ */
+export default class UserContoller {
 
-// console.log(`user: ${db.user}`);
-
-const createUser = (req, res) =>
-  User
+  /**
+   * Create acocunt for a user
+   * @method createUser
+   * @param {object} req 
+   * @param {object} res
+   * @return {json} 
+   */
+  createUser(req, res) {
+    const salt = bcrypt.genSaltSync(10);
+    Users
     .create({
       username: req.body.username,
-      password: req.body.password,
-      email: req.body.email
+      password: bcrypt.hashSync(req.body.password, salt),
+      role: req.body.role
     })
     .then(user => res.status(201).send(user))
     .catch(error => res.status(400).send(error));
+  }
 
-const loginUser = (req, res) =>
-  User
+  login(req, res) {
+    Users
     .findOne({ where: {
-      email: req.body.email
+      username: req.body.username,
     } }).then((users) => {
       bcrypt.compare(req.body.password, users.password, (err, response) => {
         if (response) {
           const token = jwt.sign({
-            username: user.username
-          }, secret, { expiresIn: 86400 });
+            id: users.id,
+            username: users.username
+          }, process.env.JWT_SECRET, { expiresIn: 86400 });
           return res.status(200).send({
             message: 'success',
             token
@@ -36,3 +47,5 @@ const loginUser = (req, res) =>
       });
     })
     .catch(error => res.status(400).send(error));
+  }
+}

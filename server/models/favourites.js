@@ -1,16 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Books = sequelize.define('Books', {
+  var favourites = sequelize.define('favourites', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    bookName: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    author: DataTypes.STRING,
-    quantity: DataTypes.INTEGER,
-    publishYear: DataTypes.STRING
+    bookId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -18,5 +15,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return Books;
+  return favourites;
 };

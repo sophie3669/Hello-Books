@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server/app.js --exec babel-node",
     "test2": "mocha server/test --timeout 10000",
-    "test": "mocha -r babel-register -r babel-polyfill server/dummyTest"
+    "test": "mocha -r babel-register -r babel-polyfill server/mock/dummyTest/",
+    "migrate-undo": "node_modules/.bin/ sequelize db:migrate:undo:all",
+    "migrate": "node_modules/.bin/ sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "babel-register": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
