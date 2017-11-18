@@ -1,6 +1,6 @@
 /**
  * 
- * Favorites dummy database
+ * Favorites mock database
  */
 
 const favorites = {

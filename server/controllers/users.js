@@ -6,7 +6,7 @@ require('dotenv').config();
 /**
  * @class UserController
  */
-export default class UserContoller {
+export default class UserController {
 
   /**
    * Create acocunt for a user
@@ -19,7 +19,7 @@ export default class UserContoller {
     const salt = bcrypt.genSaltSync(10);
     Users
     .create({
-      username: req.body.username,
+      userName: req.body.username,
       password: bcrypt.hashSync(req.body.password, salt),
       role: req.body.role
     })
@@ -30,13 +30,14 @@ export default class UserContoller {
   login(req, res) {
     Users
     .findOne({ where: {
-      username: req.body.username,
+      userName: req.body.username,
     } }).then((users) => {
+      console.log(users)
       bcrypt.compare(req.body.password, users.password, (err, response) => {
         if (response) {
           const token = jwt.sign({
             id: users.id,
-            username: users.username
+            username: users.userName
           }, process.env.JWT_SECRET, { expiresIn: 86400 });
           return res.status(200).send({
             message: 'success',

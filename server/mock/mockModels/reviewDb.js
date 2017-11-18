@@ -1,5 +1,5 @@
 /**
- * book reviews dummy database
+ * book reviews mock database
  */
 
 const reviews = {

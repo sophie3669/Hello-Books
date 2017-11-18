@@ -6,54 +6,26 @@ import swaggerJSDoc from 'swagger-jsdoc';
 /**
  * Postgres database imports
  */
-// import  router from './routes/admin';
-// import  bookRouter from './routes/books';
-import userRouter from './routes/userRouter';
+ import  adminRouter from './routes/adminRouter';
+ import  bookRouter from './routes/bookRouter';
+ import userRouter from './routes/userRouter';
 
 /**
  * dummyDb imports
  */
-import  router from './mock/dummyRoutes/admin';
-// import  bookRouter from './dummyRoutes/books';
-// import userRouter from './dummyRoutes/user';
-
-
-
-
-
+//import  router from './mock/mockRoutes/admin';
+//import  bookRouter from './mock/mockRoutes/books';
+//import userRouter from './mock/mockRoutes/user';
 
 const app = express();
 
-var swaggerDefinition = {
-	info: {
-	  title: 'Node Swagger API',
-	  version: '1.0.0',
-	  description: 'Demonstrating how to describe a RESTful API with Swagger',
-	},
-	host: 'localhost:3000',
-	basePath: '/',
-  };
-  
-  // options for the swagger docs
-  var options = {
-	// import swaggerDefinitions
-	swaggerDefinition: swaggerDefinition,
-	// path to the API docs
-	apis: ['../routes/*.js'],
-  };
-  
-  // initialize swagger-jsdoc
-  const swaggerSpec = swaggerJSDoc(options);
 
-  app.get('/swagger.json', function(req, res) {
-	res.setHeader('Content-Type', 'application/json');
-	res.send(swaggerSpec);
-  });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', userRouter);
-app.use('/', router);
+app.use('/', adminRouter);
+app.use('/', bookRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send({

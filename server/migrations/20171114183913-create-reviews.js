@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('BorrowedBooks', {
+    return queryInterface.createTable('Reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,23 +14,8 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      borrowDate: {
-        type: Sequelize.DATE
-      },
-      returnDate: {
-        type: Sequelize.DATE
-      },
-      borrowApproval: {
-        type: Sequelize.STRING
-      },
-      returnApproval: {
-        type: Sequelize.STRING
-      },
-      returnStatus: {
-        type: Sequelize.STRING
-      },
-      dateReturned: {
-        type: Sequelize.DATE
+      review: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('BorrowedBooks');
+    return queryInterface.dropTable('Reviews');
   }
 };

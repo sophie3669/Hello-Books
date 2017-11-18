@@ -1,5 +1,5 @@
 /**
- * Admin Dummy Database
+ * Admin mock Database
  * 
  */
 const db = {
