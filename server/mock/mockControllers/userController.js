@@ -1,6 +1,6 @@
-import books from '../dummyModels/booksDb';
-import user from '../dummyModels/userDb';
-import brwdBooks from '../dummyModels/brwdBooksDb';
+import books from '../mockModels/booksDb';
+import user from '../mockModels/userDb';
+import brwdBooks from '../mockModels/brwdBooksDb';
 
 /**
   * @class UserPriviledge

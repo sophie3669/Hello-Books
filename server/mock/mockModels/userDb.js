@@ -1,5 +1,5 @@
 /**
- * users dummy database.
+ * users mock database.
  */
 
 const user = {

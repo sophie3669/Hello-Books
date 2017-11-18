@@ -1,11 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var favourites = sequelize.define('favourites', {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
+  var Favourites = sequelize.define('Favourites', {
     bookId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
   }, {
@@ -15,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return favourites;
+  return Favourites;
 };

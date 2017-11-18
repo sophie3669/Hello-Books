@@ -1,5 +1,5 @@
 /**
- * borrowed books dummy database
+ * borrowed books mock database
  */
 
 

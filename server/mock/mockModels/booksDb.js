@@ -1,5 +1,5 @@
 /**
- * books dummy database
+ * books mock database
  */
 const books = {
     

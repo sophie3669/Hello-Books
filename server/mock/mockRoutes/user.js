@@ -4,7 +4,7 @@
 
 
 import express from 'express';
-import UserPriviledge from '../dummyControllers/userController';
+import UserPriviledge from '../mockControllers/userController';
 
 const userRouter = express.Router();
 const user = new UserPriviledge();

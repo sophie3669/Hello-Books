@@ -1,8 +1,8 @@
-import books from '../dummyModels/booksDb';
-import user from '../dummyModels/userDb';
-import reviews from '../dummyModels/reviewDb';
-import favorites from '../dummyModels/favoritesDb';
-import votes from '../dummyModels/votesDb';
+import books from '../mockModels/booksDb';
+import user from '../mockModels/userDb';
+import reviews from '../mockModels/reviewDb';
+import favorites from '../mockModels/favoritesDb';
+import votes from '../mockModels/votesDb';
 
 
 
