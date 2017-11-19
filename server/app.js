@@ -40,9 +40,10 @@ app.use((req, res, next ) => {
  })
  next(err)
 });
+const port = parseInt(process.env.PORT, 10)|| 3000;
 
-app.listen(3000, () => {
-	console.log("Listening to port 3000");
+app.listen(port, () => {
+	console.log("Listening to port  "+port);
 });
 
 export default app;
