@@ -1,5 +1,8 @@
 import { Books, Users,
   Reviews, Favourites, Votes } from '../models';
+  const Sequelize = require('sequelize');
+  
+   const instance = Sequelize.Instance;
 
 export default class bookController {
 
@@ -40,13 +43,7 @@ export default class bookController {
     const userId = parseInt(req.params.userId, 10); 
     
     Favourites
-    .findOne({ where: {bookId: bookId, userId: userId} })
-    .then(result => {
-      if (result) {
-       return res.status(409).send({
-          message: 'Book already favourited by you',
-        });
-      }
+    
        return Favourites.create({
           bookId: bookId,
           userId: userId,
@@ -55,7 +52,7 @@ export default class bookController {
           message: 'Book added successfully'
         }))
         .catch(error => res.status(400).send(error));
-    })
+    
    }
 
   getUserFavourites(req, res){
@@ -81,77 +78,45 @@ export default class bookController {
     )
   }
 
-  isBookAvailable(req,res){
-    const bookId = parseInt(req.params.bookId, 10);
-    
-    return Books
-     .findById(bookId)
-
-    .then(Books => {
-        if (!Books) {
-         return res.status(404).send({
-            message: 'Book Not Found',
-          });
-        }
-        return true;
-
-    })
-  }
-
-    isVotesAvailable(req,res){
-      const bookId = parseInt(req.params.bookId, 10);
+      addVotes(req,res){
       
-      return Votes
-      .findOne({ where: {bookId: bookId} })
-  
-      .then(votes => {
-          if (!votes) {
-             Votes
-               .create({
+
+        const bookId = parseInt(req.params.bookId, 10);
+        const upVotes = req.body.upVotes;
+        const downVotes = req.body.downVotes
+
+        Votes.findOne({ where: { bookId } })
+        .then((report) => {
+            if(!report) {
+             return Votes
+              .create({
                 
-                bookId : req.params.bookId,
-                upVotes: req.body.upVotes,
-                downVotes: req.body.downVotes
-  
-          })
-          return Votes
-             .update({
-                bookId: Books.bookId, 
-               upVotes: (Books.upVotes + req.body.upVotes) || Books.upVotes,
-               downVotes: (Books.downVotes + req.body.downVotes) || Books.downVotes,
-    
-           })
-             .then(() => res.status(200).send(Votes))  // Send back the updated book.
-             .catch((error) => res.status(400).send(error));
-         }
-           })
-      
-        .catch((error) => res.status(400).send(error));
-    
-       }
-      //  )}
-    
-  
-    addVotes(req,res){
-    
-   if(bookController.isBookAvailable && bookController.isVotesAvailable){
-    res.status(200).json({
-      status: 'successful',
-      message: 'Record updated successfully'
-    });
-   }
+              bookId : bookId,
+              upVotes: req.body.upVotes,
+              downVote: req.body.downVote
+              
+              })
+           
+            }
+            return Votes
+            .update({
+            bookId : bookId,
+            upVotes: instance.increment({ upVotes }),
+            downVote: instance.increment({ downVotes }),
+            })
+         
 
- }
-  
-
-    
-    
-}
+           
+          
+        
+    })
 
   
    
 
+  }
 
+}
 
 
  

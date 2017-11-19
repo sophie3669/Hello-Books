@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { Users } from '../models';
+import { Users, BorrowedBooks } from '../models';
 
 require('dotenv').config();
 /**
@@ -49,4 +49,51 @@ export default class UserController {
     })
     .catch(error => res.status(400).send(error));
   }
+
+    borrowBook(req, res){
+
+      const bookId = parseInt(req.params.bookId, 10);
+  
+                   return BorrowedBooks
+                   .create({
+                      
+                    bookId : req.params.bookId,
+                    userId: req.params.userId,
+                    borrowedDate: req.body.borrowedDate,
+                    returnDate: req.body.returnDate,
+                    borrowApproval: "Pending",
+                    returnApproval: "Pending",
+                    returnStatus: "Not Returned",
+                    dateReturned: req.body.returnDate
+       
+       
+                   })
+                   .then(status => res.status(201).send(status))
+                   .catch(error => res.status(400).send(error));
+   
+              }
+
+
+              returnBook(req, res){
+                
+                      const bookId = parseInt(req.params.bookId, 10);
+                  
+                                   return BorrowedBooks
+                                   .update({
+                                    bookId : req.params.bookId,
+                                    userId: req.params.userId,
+                                    borrowedDate: req.body.borrowedDate,
+                                    returnDate: req.body.returnDate,
+                                    borrowApproval: "Approved",
+                                    returnApproval: "Pending",
+                                    returnStatus: "returned but not approved",
+                                    dateReturned: req.body.returnDate
+                       
+                       
+                                   })
+                                   .then(status => res.status(201).send(status))
+                                   .catch(error => res.status(400).send(error));
+                   
+                              }  
+            
 }

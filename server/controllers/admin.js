@@ -61,64 +61,44 @@ export default class adminController {
 
        
         acceptBorrowedBooks(req,res){
-          return BorrowedBooks
-          .find({
-              where: {
-                userId: req.params.userId,
-                bookId: req.params.bookId,
-                borrowApproval: 0,
-              },
-            })
-          .then(BorrowedBooks=> {
-            if (!BorrowedBooks) {
-              return res.status(404).send({
-                message: 'Borrow record Not Found',
-              });
-            }
-      
+         
             return BorrowedBooks
             .update({
-              borrowApproval: 1, 
-              
-            })
+              bookId : req.params.bookId,
+              userId: req.params.userId,
+              borrowedDate: req.body.borrowedDate,
+              returnDate: req.body.returnDate,
+              borrowApproval: "Approved",
+              returnApproval: "Pending",
+              returnStatus: "Not Returned",
+              dateReturned: req.body.returnDate
+ 
+ 
+             })
             .then(() => res.status(200).send(Books))  // Send back the updated borrowed book.
             .catch((error) => res.status(400).send(error));
-        })
-        .catch((error) => res.status(400).send(error));
-  
+      
 
         }
 
         acceptReturnedBooks(req,res){
-          return BorrowedBooks
-          .find({
-              where: {
-                userId: req.params.userId,
-                bookId: req.params.bookId,
-                borrowApproval: 1,
-                returnApproval: 0,
-                returnStatus:0
-              },
-            })
-          .then(BorrowedBooks=> {
-            if (!BorrowedBooks) {
-              return res.status(404).send({
-                message: 'Pending Approval records Not Found',
-              });
-            }
-      
+          
             return BorrowedBooks
             .update({
-              returnApproval: 1,
-              returnStatus: 1,
-              dateReturned : req.body.dateReturned 
-              
+              bookId : req.params.bookId,
+              userId: req.params.userId,
+              borrowedDate: req.body.borrowedDate,
+              returnDate: req.body.returnDate,
+              borrowApproval: "Approved",
+              returnApproval: "Approved",
+              returnStatus:   "Returned",
+              dateReturned: req.body.returnDate
+ 
+ 
             })
             .then(() => res.status(200).send(BorrowedBooks))  // Send back the updated borrowed book.
             .catch((error) => res.status(400).send(error));
-        })
-        .catch((error) => res.status(400).send(error));
-  
+       
 
         }
 
