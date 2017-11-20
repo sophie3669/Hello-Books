@@ -5,7 +5,7 @@ import  { BorrowedBooks} from '../models';
 export default class adminController {
     
       /**
-       * Create acocunt for a user
+       *  method to add a book
        * @method addBook
        * @param {object} req 
        * @param {object} res
@@ -14,51 +14,65 @@ export default class adminController {
 
         addBook(req, res) {
           
-                Books
-                .create({
-                   
-                 bookName : req.body.bookName,
-                 description: req.body.description,
-                 author: req.body.author,
-                 quantity: req.body.quantity,
-                 publishYear: req.body.publishYear
-    
-    
-                })
-                .then(Books => res.status(201).send(Books))
-                .catch(error => res.status(400).send(error));
+          Books
+          .create({
+              
+            bookName : req.body.bookName,
+            description: req.body.description,
+            author: req.body.author,
+            quantity: req.body.quantity,
+            publishYear: req.body.publishYear
 
-            }
+
+          })
+          .then(Books => res.status(201).send(Books))
+          .catch(error => res.status(400).send(error));
+
+      }
+
+     /**
+       *  method to modify/update a book
+       * @method modifyBook
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
 
         modifyBook(req, res){
            const bookId = parseInt(req.params.bookId, 10);
 
-            return Books
-            .findById(bookId)
-             
-              .then(Books => {
-                if (!Books) {
-                   return res.status(404).send({
-                    message: 'Book Not Found',
-                  });
-                }
-                 return Books
-                  .update({
-                    bookId: Books.bookId, 
-                    bookName: req.body.bookName || Books.bookName,
-                    description: req.body.description || Books.description,
-                    author: req.body.author || Books.author,
-                    quantity: req.body.quantity || Books.quantity,
-                    publishYear: req.body.publishYear || Books.publishYear
-
-                  })
-                  .then(() => res.status(200).send(Books))  // Send back the updated book.
-                  .catch((error) => res.status(400).send(error));
-              })
-              .catch((error) => res.status(400).send(error));
+      return Books
+      .findById(bookId)
         
-        }
+        .then(Books => {
+          if (!Books) {
+              return res.status(404).send({
+              message: 'Book Not Found',
+            });
+          }
+            return Books
+            .update({
+              bookId: Books.bookId, 
+              bookName: req.body.bookName || Books.bookName,
+              description: req.body.description || Books.description,
+              author: req.body.author || Books.author,
+              quantity: req.body.quantity || Books.quantity,
+              publishYear: req.body.publishYear || Books.publishYear
 
+            })
+            .then(() => res.status(200).send(Books))  // Send back the updated book.
+            .catch((error) => res.status(400).send(error));
+        })
+        .catch((error) => res.status(400).send(error));
+  
+  }
+     /**
+       *  method to accept a borrowed book
+       * @method accceptBorrowedBooks
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
        
         acceptBorrowedBooks(req,res){
          
@@ -80,6 +94,14 @@ export default class adminController {
       
 
         }
+
+     /**
+       *  method to accept a returned book
+       * @method acceptReturnedBooks
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
 
         acceptReturnedBooks(req,res){
           

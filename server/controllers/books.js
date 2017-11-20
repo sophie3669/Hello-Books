@@ -7,7 +7,7 @@ import { Books, Users,
 export default class bookController {
 
 /**
- * Create methods for books
+ *  methods to get all books
  * @method getBooks
  * @param {object} req 
  * @param {object} res
@@ -21,6 +21,13 @@ export default class bookController {
     .catch(error => res.status(400).send(error));
   }
 
+   /**
+       *  method to review a book
+       * @method reviewBook
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
   reviewBook(req,res){
     const bookId = parseInt(req.params.bookId, 10);
     const userId = parseInt(req.params.userId, 10);    
@@ -37,6 +44,14 @@ export default class bookController {
     .catch(error => res.status(400).send(error));
 
   }
+
+   /**
+       *  method to favorite a book
+       * @method makeFavorites
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
 
   makeFavorites(req, res) {
     const bookId = parseInt(req.params.bookId, 10);
@@ -55,6 +70,13 @@ export default class bookController {
     
    }
 
+    /**
+       *  method to get a users favorite
+       * @method getUserFavorites
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
   getUserFavourites(req, res){
     const usersId = parseInt(req.params.userId, 10);
          
@@ -78,6 +100,13 @@ export default class bookController {
     )
   }
 
+   /**
+       *  method to vote(upvote & downvote) a book
+       * @method addVotes
+       * @param {object} req 
+       * @param {object} res
+       * @return {json} 
+       */
       addVotes(req,res){
       
 
