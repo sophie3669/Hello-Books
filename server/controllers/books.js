@@ -107,45 +107,38 @@ export default class bookController {
        * @param {object} res
        * @return {json} 
        */
-      addVotes(req,res){
+      addUpVotes(req,res){
       
-
         const bookId = parseInt(req.params.bookId, 10);
-        const upVotes = req.body.upVotes;
-        const downVotes = req.body.downVotes
-
-        Votes.findOne({ where: { bookId } })
-        .then((report) => {
-            if(!report) {
+       
              return Votes
               .create({
                 
               bookId : bookId,
-              upVotes: req.body.upVotes,
-              downVote: req.body.downVote
+              upVotes: instance.autoIncrement()
+             // downVote: req.body.downVote
               
               })
            
             }
-            return Votes
-            .update({
-            bookId : bookId,
-            upVotes: instance.increment({ upVotes }),
-            downVote: instance.increment({ downVotes }),
-            })
-         
 
+       addDownVotes(req,res){
+
+
+        return Votes
+        .update({
+        bookId : bookId,
+        downVotes: downVotes.autoIncrement
+        //upVotes: instance.increment({ upVotes }),
+        //downVote: instance.increment({ downVotes }),
+        })
+
+       }     
            
-          
-        
-    })
-
-  
    
-
   }
 
-}
+
 
 
  
