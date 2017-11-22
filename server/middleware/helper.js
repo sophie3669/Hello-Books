@@ -293,12 +293,23 @@ export default class Helpers {
         .catch((error) => {
             res.status(500).send(error)
             })
-        
-
+    
 
         }
         
-    
-   
+    static votenotExist(){
 
+        const bookId = parseInt(req.params.bookId, 10);
+        //const upVotes = parseInt(req.body.upVotes);
+        //const downVotes = parseInt(req.body.downVotes);
+
+        return Votes
+        .findOne({ where: { bookId } })
+        .then((report) => {
+            if(!report) {
+    }
+    next();
+  })
+
+ }
 }
