@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
+const db = require('../server/models/index';
 /**
  * Postgres database imports
  */
@@ -48,10 +49,12 @@ app.use((req, res, next ) => {
  })
  next(err)
 });
+db.sequelize.sync().then(() =>{
 const port = parseInt(process.env.PORT, 10)|| 3000;
 
 app.listen(port, () => {
 	console.log("Listening to port  "+port);
 });
 
+});
 export default app;
