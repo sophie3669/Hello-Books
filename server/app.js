@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
-const db = require('../server/models/index';
+const db = require('../server/models/index');
 /**
  * Postgres database imports
  */
