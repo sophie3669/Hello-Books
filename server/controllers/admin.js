@@ -21,7 +21,8 @@ export default class adminController {
             description: req.body.description,
             author: req.body.author,
             quantity: req.body.quantity,
-            publishYear: req.body.publishYear
+            publishYear: req.body.publishYear,
+            votes: req.body.votes
 
 
           })

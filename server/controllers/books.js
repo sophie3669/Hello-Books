@@ -100,41 +100,8 @@ export default class bookController {
     )
   }
 
-   /**
-       *  method to vote(upvote & downvote) a book
-       * @method addVotes
-       * @param {object} req 
-       * @param {object} res
-       * @return {json} 
-       */
-      addUpVotes(req,res){
+   
       
-        const bookId = parseInt(req.params.bookId, 10);
-       
-             return Votes
-              .create({
-                
-              bookId : bookId,
-              upVotes: instance.autoIncrement()
-             // downVote: req.body.downVote
-              
-              })
-           
-            }
-
-       addDownVotes(req,res){
-
-
-        return Votes
-        .update({
-        bookId : bookId,
-        downVotes: downVotes.autoIncrement
-        //upVotes: instance.increment({ upVotes }),
-        //downVote: instance.increment({ downVotes }),
-        })
-
-       }     
-           
    
   }
 

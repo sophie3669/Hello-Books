@@ -10,11 +10,7 @@ bookRouter.post('/api/v1/users/:userId/review/:bookId', books.reviewBook);
 bookRouter.post('/api/v1/users/:userId/fav/:bookId',
     Helpers.userExists, Helpers.bookExists, books.makeFavorites);
 bookRouter.get('/api/v1/users/:userId/favbooks', books.getUserFavourites);
-bookRouter.post('/api/books/:bookId/UpVotes/:userId',Helpers.bookExists, 
-    Helpers.userExists, books.addUpVotes);
-bookRouter.post('/api/books/:bookId/DownVotes/:userId',Helpers.bookExists, 
-    Helpers.userExists, books.addDownVotes);
-//bookRouter.get('/api/books?:sort&:order', books.getUpvotes);
+
 
 
 
