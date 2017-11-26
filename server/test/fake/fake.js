@@ -64,12 +64,12 @@ const fakeData = {
     password: '11110000',
     confirmPassword: '11110000'
   },
-  nUsers: {
+  noConfirmPassword: {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
     password: '11110000',
-    confirmPassword: '11110000'
+    username: faker.name.findName()
   }
   
 };

@@ -8,14 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       bookId: {
         type: Sequelize.INTEGER
       },
       upVotes: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       downVotes: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

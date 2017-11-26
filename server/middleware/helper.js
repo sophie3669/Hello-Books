@@ -10,7 +10,7 @@ import { Books, Users,
 export default class Helpers {
 
      /**
-       *  Helper class to authenticate Users
+       * Helper class to authenticate Users
        * @method userExists
        * @param {object} req 
        * @param {object} res
@@ -41,12 +41,27 @@ export default class Helpers {
        */
     static isValidInputs(req, res, next){
     const { firstName,lastName, email,username, password,confirmPassword, role } = req.body;
-    if (username === '' || typeof username !== 'string') {
+    if (username === '' || typeof username !== 'string' || !username) {
         return res.status(400).send({
           message: 'Please enter your username.'
         })
       } 
-      if (password === ' '){
+    if (firstName === '' || typeof firstName !== 'string' || !firstName) {
+    return res.status(400).send({
+        message: 'Please enter your firstname.'
+    })
+    } 
+    if (lastName === '' || typeof lastName !== 'string' || !lastName) {
+        return res.status(400).send({
+          message: 'Please enter your lastname.'
+        })
+      }
+      if (email === '' || typeof email !== 'string' || !email) {
+        return res.status(400).send({
+          message: 'Please enter your Email Address.'
+        })
+      }  
+      if (password === ' '  || !password){
         return res.status(400).send({
           message: 'please enter a password.'
         })
@@ -57,7 +72,7 @@ export default class Helpers {
           message: 'length must be at least 5 characters for security '
         })
       }
-      if (confirmPassword === " "){
+      if (confirmPassword === " " || !confirmPassword){
         return res.status(400).send({
             message: 'please re-confirm your password '
         })
@@ -70,7 +85,7 @@ export default class Helpers {
             message: 'password does not match, please check again'
         })
       }
-      if(role === ' '){
+      if(role === ' ' || !role){
   
         return res.status(400).send({
           message: 'please input a role'
@@ -87,12 +102,12 @@ export default class Helpers {
        * @return {json} 
        */
     static isValidUserLogin(req, res, next){
-     const { username } = req.body;
-     Users.findOne({ where: { username } })
+     const { username, email} = req.body;
+     Users.findOne({ where: { username , email} })
     .then((user) => {
        if(!user) {
          return res.status(401).send({
-           message: "Sorry wrong username"
+           message: "Sorry wrong username/email"
          })
        }
        next();
@@ -297,19 +312,63 @@ export default class Helpers {
 
         }
         
-    static votenotExist(){
+    static userUpvoteExist(req, res, next){
 
         const bookId = parseInt(req.params.bookId, 10);
-        //const upVotes = parseInt(req.body.upVotes);
-        //const downVotes = parseInt(req.body.downVotes);
+        const userId = parseInt(req.params.userId, 10);
 
         return Votes
-        .findOne({ where: { bookId } })
+        .findOne({ where: { bookId, userId, upVotes: 1} })
         .then((report) => {
-            if(!report) {
+            if(report) {
+        return res.status(401).send({
+            message: "you have already upVoted this book before"
+            })
     }
     next();
   })
 
  }
+
+  static usersDownvoteExist(req, res, next){
+
+    const bookId = parseInt(req.params.bookId, 10);
+    const userId = parseInt(req.params.userId, 10);
+
+    
+
+    return Votes
+    .findOne({ where: { bookId, userId, downVotes: 1} })
+    .then((report) => {
+        if(report) {
+    return res.status(401).send({
+        message: "you have already downVoted this book before"
+        })
+          }
+            next();
+         })
+
+        }
+
+        static usersDownvoteExist(req, res, next){
+
+    const bookId = parseInt(req.params.bookId, 10);
+    const userId = parseInt(req.params.userId, 10);
+
+    
+
+    return Votes
+    .findOne({ where: { bookId, userId, downVotes: 1} })
+    .then((report) => {
+        if(report) {
+    return res.status(401).send({
+        message: "you have already downVoted this book before"
+        })
+          }
+            next();
+         })
+
+        }
+ 
+            
 }

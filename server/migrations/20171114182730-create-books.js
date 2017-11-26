@@ -23,6 +23,12 @@ module.exports = {
       publishYear: {
         type: Sequelize.STRING
       },
+      upVotes: {
+        type: Sequelize.INTEGER
+      },
+      downVotes: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

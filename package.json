@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/app.js --exec babel-node",
     "test-mock": "mocha -r babel-register -r babel-polyfill server/mock/dummyTest/",
-    "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register --require babel-polyfill --recursive server/test --timeout 30000 ",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive server/test",
     "migrate-undo": "node_modules/.bin/ sequelize db:migrate:undo:all",
     "migrate": "node_modules/.bin/ sequelize db:migrate"
   },

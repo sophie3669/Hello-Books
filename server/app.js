@@ -22,8 +22,11 @@ const app = express();
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
+// parse application/json
+app.use(bodyParser.json())
 app.use('/', userRouter);
 app.use('/', adminRouter);
 app.use('/', bookRouter);
@@ -49,12 +52,12 @@ app.use((req, res, next ) => {
  })
  next(err)
 });
-db.sequelize.sync().then(() =>{
+//db.sequelize.sync().then(() =>{
 const port = parseInt(process.env.PORT, 10)|| 3000;
 
 app.listen(port, () => {
 	console.log("Listening to port  "+port);
-});
+//});
 
 });
 export default app;

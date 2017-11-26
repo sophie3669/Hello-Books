@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { Users, BorrowedBooks } from '../models';
+import { Users, BorrowedBooks, Votes} from '../models';
 
 require('dotenv').config();
 /**
@@ -125,5 +125,16 @@ export default class UserController {
           .catch(error => res.status(400).send(error));
 
     }  
+    
 
-}
+      signout(req, res){
+        return res.status(200).send({
+          message: 'successfully signed off',
+        })
+      }
+  }
+
+  
+
+
+
