@@ -1,18 +1,17 @@
 import chai from 'chai';
+import { it, describe } from 'mocha';
+
 import chaiHttp from 'chai-http';
 import app from '../../app';
 
 
-const should = chai.should();
-
-chai.use(chaiHttp); 
+chai.use(chaiHttp);
 
 describe('Hello Books', () => {
   it('should get the home page', (done) => {
     chai.request(app)
       .get('/')
       .end((err, res) => {
-        res.should.be.json;
         res.body.should.be.a('object');
         res.should.have.status(200);
         done();
@@ -23,13 +22,10 @@ describe('Hello Books', () => {
     chai.request(app)
       .get('/error')
       .end((err, res) => {
-        res.should.be.json;
         res.body.should.be.a('object');
         res.should.have.status(404);
         done();
       });
   });
-
 });
-
 

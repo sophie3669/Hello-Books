@@ -1,6 +1,5 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var BorrowedBooks = sequelize.define('BorrowedBooks', {
+  const BorrowedBooks = sequelize.define('BorrowedBooks', {
     bookId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     borrowedDate: DataTypes.DATE,
@@ -8,13 +7,14 @@ module.exports = (sequelize, DataTypes) => {
     borrowApproval: DataTypes.STRING,
     returnApproval: DataTypes.STRING,
     returnStatus: DataTypes.STRING,
-    dateReturned: DataTypes.DATE
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    dateReturned: DataTypes.DATE,
   });
+
+  BorrowedBooks.associate = (models) => {
+    BorrowedBooks.belongsTo(models.Users, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
   return BorrowedBooks;
 };

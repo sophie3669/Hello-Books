@@ -1,19 +1,42 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Users = sequelize.define('Users', {
+  const Users = sequelize.define('Users', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     confirmPassword: DataTypes.STRING,
-    role: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    role: DataTypes.INTEGER,
   });
+
+  Users.associate = (models) => {
+    Users.hasMany(models.Reviews, {
+      foreignKey: 'userId',
+    });
+  };
+
+  Users.associate = (models) => {
+    Users.hasMany(models.Votes, {
+      foreignKey: 'userId',
+    });
+  };
+
+  Users.associate = (models) => {
+    Users.hasMany(models.Favourites, {
+      foreignKey: 'userId',
+    });
+  };
+
+  Users.associate = (models) => {
+    Users.hasMany(models.Books, {
+      foreignKey: 'userId',
+    });
+  };
+
+  Users.associate = (models) => {
+    Users.hasMany(models.BorrowedBooks, {
+      foreignKey: 'userId',
+    });
+  };
   return Users;
 };
