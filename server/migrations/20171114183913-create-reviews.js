@@ -1,33 +1,40 @@
-'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Reviews', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Reviews', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
+    },
+    bookId: {
+      type: Sequelize.INTEGER,
+      reference: {
+        model: 'Books',
+        key: 'id',
+        as: 'bookId',
+
       },
-      bookId: {
-        type: Sequelize.INTEGER
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      reference: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId',
       },
-      userId: {
-        type: Sequelize.INTEGER
-      },
-      review: {
-        type: Sequelize.TEXT
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
-  },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Reviews');
-  }
+
+    },
+    review: {
+      type: Sequelize.TEXT,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+  }),
+  down: queryInterface => queryInterface.dropTable('Reviews'),
 };

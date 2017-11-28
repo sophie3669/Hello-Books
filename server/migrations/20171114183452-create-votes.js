@@ -1,36 +1,42 @@
-'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Votes', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Votes', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      reference: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId',
       },
-      userId: {
-        type: Sequelize.INTEGER
+    },
+    bookId: {
+      type: Sequelize.INTEGER,
+      reference: {
+        model: 'Books',
+        key: 'id',
+        as: 'bookId',
       },
-      bookId: {
-        type: Sequelize.INTEGER
-      },
-      upVotes: {
-        type: Sequelize.INTEGER
-      },
-      downVotes: {
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
-  },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Votes');
-  }
+
+    },
+    upVotes: {
+      type: Sequelize.INTEGER,
+    },
+    downVotes: {
+      type: Sequelize.INTEGER,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+  }),
+  down: queryInterface => queryInterface.dropTable('Votes'),
 };
