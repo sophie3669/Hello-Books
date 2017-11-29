@@ -1,5 +1,8 @@
+import sequelize from 'sequelize';
 import { Books, Users, Votes, BorrowedBooks } from '../models';
 
+
+const { Op } = sequelize.Op;
 
 export default class Helpers {
   /**
@@ -108,6 +111,40 @@ export default class Helpers {
       });
   }
 
+  /**
+       *  method to check for valid inputs of  a book
+       * @method bookExists
+       * @param {object} req
+       * @param {object} res
+       * @return {json}
+       */
+
+  static isValidBookInputs(req, res, next) {
+    const {
+      userId, bookName, description, author, quantity, publishYear,
+    } = req.body;
+    if (userId === '' || typeof userId !== 'number' || !userId) {
+      return res.status(400).send({
+        message: 'Please enter your userId.',
+      });
+    }
+    if (bookName === '' || typeof bookName !== 'string' || !bookName) {
+      return res.status(400).send({
+        message: 'Please enter your book name.',
+      });
+    }
+    if (description === '' || typeof description !== 'string' || !description) {
+      return res.status(400).send({
+        message: 'Please enter your book description.',
+      });
+    }
+    if (author === '' || typeof bookName !== 'string' || !bookName) {
+      return res.status(400).send({
+        message: 'Please enter your book name.',
+      });
+    }
+    return next();
+  }
 
   /**
        *  method to check the existence of  a book
@@ -116,6 +153,7 @@ export default class Helpers {
        * @param {object} res
        * @return {json}
        */
+
   static bookExists(req, res, next) {
     const id = parseInt(req.params.bookId, 10);
     Books.findOne({ where: { id } })
@@ -147,6 +185,31 @@ export default class Helpers {
         if (!admin) {
           return res.status(401).send({
             message: "Sorry you're not an authorized Amin, contact your DBMA",
+          });
+        }
+        return next();
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  }
+
+
+  /**
+       *  method to check if Admin Exists
+       * @method userAlreadyExists
+       * @param {object} req
+       * @param {object} res
+       * @return {json}
+       */
+
+  static UserAlreadyExists(req, res, next) {
+    const email = parseInt(req.body.email, 10);
+    Users.findOne({ where: { email } })
+      .then((user) => {
+        if (user) {
+          return res.status(401).send({
+            message: 'Sorry user already exist',
           });
         }
         return next();
