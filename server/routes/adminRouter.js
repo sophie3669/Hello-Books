@@ -5,12 +5,9 @@ import Helpers from '../middleware/helper';
 const adminRouter = express.Router();
 
 
-adminRouter.post(
-  '/api/v1/books',
-  Helpers.adminUserExists, AdminContoller.addBook,
-);
+adminRouter.post('/api/v1/books', Helpers.adminUserExists, Helpers.authAdmin, AdminContoller.addBook);
 adminRouter.put(
-  '/api/v1/books/:bookId', Helpers.adminUserExists, Helpers.bookExists,
+  '/api/v1/books/:bookId', Helpers.adminUserExists, Helpers.authAdmin, Helpers.bookExists,
   AdminContoller.modifyBook,
 );
 adminRouter.put(

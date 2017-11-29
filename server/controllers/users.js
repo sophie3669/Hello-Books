@@ -45,7 +45,7 @@ export default class UserController {
     Users
       .findOne({
         where: {
-          username: req.body.username,
+          email: req.body.email,
         },
       }).then((users) => {
         bcrypt.compare(req.body.password, users.password, (err, response) => {
@@ -53,6 +53,7 @@ export default class UserController {
             const token = jwt.sign({
               id: users.id,
               username: users.username,
+              role: users.role,
             }, process.env.JWT_SECRET, { expiresIn: 86400 });
             return res.status(200).send({
               message: 'success',
@@ -74,6 +75,25 @@ export default class UserController {
        */
   static borrowBook(req, res) {
     return BorrowedBooks
+      .create({
+
+        bookId: req.params.bookId,
+        userId: req.params.userId,
+        borrowedDate: req.body.borrowedDate,
+        returnDate: req.body.returnDate,
+        borrowApproval: 'Pending',
+        returnApproval: 'Pending',
+        returnStatus: 'Not Returned',
+        dateReturned: req.body.returnDate,
+
+
+      })
+      .then(status => res.status(201).send(status))
+      .catch(error => res.status(400).send(error));
+  }
+
+  static createReadingList(req, res) {
+    return createReading
       .create({
 
         bookId: req.params.bookId,

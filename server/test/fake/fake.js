@@ -56,6 +56,7 @@ const fakeData = {
     email: faker.internet.email(),
     password: '111',
     confirmPassword: '11110000',
+    role: '1',
   },
   noUsernameUsers: {
     firstName: faker.name.firstName(),

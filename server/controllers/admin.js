@@ -47,7 +47,7 @@ export default class adminController {
             message: 'Book Not Found',
           });
         }
-        return Books
+        return books
           .update({
             bookId: Books.bookId,
             bookName: req.body.bookName || Books.bookName,
@@ -55,10 +55,10 @@ export default class adminController {
             author: req.body.author || Books.author,
             quantity: req.body.quantity || Books.quantity,
             publishYear: req.body.publishYear || Books.publishYear,
-            upVotes: Books.upVotes,
-            downVotes: Books.downVotes,
+            upVotes: books.upVotes,
+            downVotes: books.downVotes,
           })
-          .then(() => res.status(200).send(Books)) // Send back the updated book.
+          .then(() => res.status(200).send(books)) // Send back the updated book.
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));

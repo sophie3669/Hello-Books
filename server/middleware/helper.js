@@ -1,6 +1,9 @@
 import sequelize from 'sequelize';
 import { Books, Users, Votes, BorrowedBooks } from '../models';
 
+const jwt = require('jsonwebtoken');
+const config = require('../../config');
+
 
 const { Op } = sequelize.Op;
 
@@ -96,8 +99,8 @@ export default class Helpers {
        * @return {json}
        */
   static isValidUserLogin(req, res, next) {
-    const { username, email } = req.body;
-    Users.findOne({ where: { username, email } })
+    const { email } = req.body;
+    Users.findOne({ where: { email } })
       .then((user) => {
         if (!user) {
           return res.status(401).send({
@@ -136,6 +139,17 @@ export default class Helpers {
     if (description === '' || typeof description !== 'string' || !description) {
       return res.status(400).send({
         message: 'Please enter your book description.',
+      });
+    }
+    if (quantity === '' || typeof quantity !== 'string' || !quantity) {
+      return res.status(400).send({
+        message: 'Please enter your book quantity.',
+      });
+    }
+
+    if (publishYear === '' || typeof publishYear !== 'string' || !publishYear) {
+      return res.status(400).send({
+        message: 'Please enter your book published year.',
       });
     }
     if (author === '' || typeof bookName !== 'string' || !bookName) {
@@ -204,7 +218,7 @@ export default class Helpers {
        */
 
   static UserAlreadyExists(req, res, next) {
-    const email = parseInt(req.body.email, 10);
+    const { email } = req.body;
     Users.findOne({ where: { email } })
       .then((user) => {
         if (user) {
@@ -387,4 +401,27 @@ export default class Helpers {
         return next();
       });
   }
+
+
+  static authAdmin(req, res, next) {
+    const token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    // This verifies the secret and checks the expressions
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(500).json({
+          auth_success: false,
+          err,
+          message: 'Failed to authenticate token.',
+        });
+      }
+      if (decoded.role !== 1) {
+        return res.status(400).json({
+          message: 'you are an unauthorised user',
+        });
+      }
+      return next();
+    });
+  }
 }
+

@@ -10,11 +10,16 @@ export default class bookController {
  * @return {json}
 */
   static getBooks(req, res) {
-    return Books
-      .findAll()
-      .then(books => res.status(200).send(books))
-      .catch(error => res.status(400).send(error));
+    const options = {};
+
+    if (req.query.sort === 'upvotes' && req.query.order === 'descending') {
+      options.order = [['upVotes', 'DESC']];
+      options.include = [{ all: true }];
+    }
+    Books.findAll(options)
+      .then(Book => res.json(Book));
   }
+
 
   /**
        *  method to review a book
