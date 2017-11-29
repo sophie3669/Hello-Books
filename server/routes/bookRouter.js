@@ -12,6 +12,4 @@ bookRouter.post(
   Helpers.userExists, Helpers.bookExists, BookController.makeFavorites,
 );
 bookRouter.get('/api/v1/users/:userId/favbooks', BookController.getUserFavourites);
-
-
 export default bookRouter;

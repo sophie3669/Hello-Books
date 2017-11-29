@@ -57,12 +57,11 @@ export default class votesController {
   }
 
   static sortUpVotes(req, res) {
-    return Books
-      .findAll({
-        order: sequelize.literal('max(Books.upVotes) DESC'),
-      })
-      .then(books => res.status(200).send(books))
-      .catch(error => res.status(400).send(error));
+    const options = {};
+    options.order = [['upVotes', 'DESC']];
+    options.include = [{ all: true }];
+    Books.findAll(options)
+      .then(Book => res.json(Book));
   }
 }
 
