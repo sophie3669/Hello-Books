@@ -10,7 +10,7 @@ import VotesController from '../controllers/votes';
 const userRouter = express.Router();
 
 
-userRouter.post('/api/v1/users/signup', Helpers.isValidInputs, UserController.createUser);
+userRouter.post('/api/v1/users/signup', Helpers.isValidInputs, Helpers.UserAlreadyExists, UserController.createUser);
 userRouter.post('/api/v1/users/signin', Helpers.isValidUserLogin, UserController.login);
 userRouter.post('/api/v1/users/signout', Helpers.isValidUserLogin, UserController.signout);
 userRouter.post(

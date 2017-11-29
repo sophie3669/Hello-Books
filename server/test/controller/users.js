@@ -108,7 +108,7 @@ describe('Users Controller', () => {
       .post('/api/v1/users/signup')
       .send(fakeData.newUsers)
       .end((err, res) => {
-        
+
         done();
       });
   });

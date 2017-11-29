@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sophie3669/system-Design.svg?branch=master)](https://travis-ci.org/sophie3669/system-Design)
+[![Build Status]https://travis-ci.org/sophie3669/Hello-Books.svg?branch=develop)](https://travis-ci.org/sophie3669/Hello-Books)
 [![Coverage Status](https://coveralls.io/repos/github/sophie3669/Hello-Books/badge.svg?branch=develop)](https://coveralls.io/github/sophie3669/Hello-Books?branch=develop)
 
 # Hello-Books
