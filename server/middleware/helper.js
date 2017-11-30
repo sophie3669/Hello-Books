@@ -1,11 +1,10 @@
 import sequelize from 'sequelize';
-import { Books, Users, Votes, BorrowedBooks } from '../models';
+import jwt from 'jsonwebtoken';
 
-const jwt = require('jsonwebtoken');
-const config = require('../../config');
+import { Books, Users, Votes, BorrowedBooks, ReadingList } from '../models';
 
-
-const { Op } = sequelize.Op;
+// const { Op } = sequelize.Op;
+const { gt } = sequelize.Op;
 
 export default class Helpers {
   /**
@@ -124,13 +123,8 @@ export default class Helpers {
 
   static isValidBookInputs(req, res, next) {
     const {
-      userId, bookName, description, author, quantity, publishYear,
+      bookName, description, author, quantity, publishYear,
     } = req.body;
-    if (userId === '' || typeof userId !== 'number' || !userId) {
-      return res.status(400).send({
-        message: 'Please enter your userId.',
-      });
-    }
     if (bookName === '' || typeof bookName !== 'string' || !bookName) {
       return res.status(400).send({
         message: 'Please enter your book name.',
@@ -208,6 +202,32 @@ export default class Helpers {
       });
   }
 
+  static bookInList(req, res, next) {
+    const bookId = parseInt(req.params.bookId, 10);
+    const userId = parseInt(req.params.userId, 10);
+    ReadingList.findOne({ where: { bookId, userId } })
+      .then((found) => {
+        if (found) {
+          return res.status(401).send({
+            message: 'Sorry you have this book in your record already',
+          });
+        }
+        return next();
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  }
+  static isValidreadlistInputs(req, res, next) {
+    const { target } = req.body;
+    if (target === '' || typeof target !== 'string' || !target) {
+      return res.status(400).send({
+        message: 'Please enter your book list target ',
+      });
+    }
+
+    return next();
+  }
 
   /**
        *  method to check if Admin Exists
@@ -243,7 +263,12 @@ export default class Helpers {
 
   static validBookQuantityExists(req, res, next) {
     const bookId = parseInt(req.params.bookId, 10);
-    Books.findOne({ where: { id: bookId, quantity: { [Op.gt]: 1 } } })
+    Books.findOne({
+      where: {
+        id: bookId,
+        quantity: { [gt]: 1 },
+      },
+    })
       .then((book) => {
         if (!book) {
           return res.status(401).send({
@@ -423,5 +448,54 @@ export default class Helpers {
       return next();
     });
   }
-}
 
+  static authUser(req, res, next) {
+    const token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    // This verifies the secret and checks the expressions
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(500).json({
+          auth_success: false,
+          err,
+          message: 'Failed to authenticate token.',
+        });
+      }
+      if (decoded.role !== 2) {
+        return res.status(400).json({
+          message: 'you are an unauthorised user, books can only be borrowed by all registered users except admin',
+        });
+      }
+      return next();
+    });
+  }
+  static isActivetrue(req, res, next) {
+    const { email } = req.body;
+
+    return Users
+      .findOne({ where: { email, active: false } })
+      .then((report) => {
+        if (!report) {
+          return res.status(401).send({
+            message: 'you are already active',
+          });
+        }
+        return next();
+      });
+  }
+
+  static isActivefalse(req, res, next) {
+    const { email } = req.body;
+
+    return Users
+      .findOne({ where: { email, active: true } })
+      .then((report) => {
+        if (!report) {
+          return res.status(401).send({
+            message: 'sorry your session is expired',
+          });
+        }
+        return next();
+      });
+  }
+}
