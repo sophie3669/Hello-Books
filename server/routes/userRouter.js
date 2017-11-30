@@ -11,7 +11,7 @@ const userRouter = express.Router();
 
 
 userRouter.post('/api/v1/users/signup', Helpers.isValidInputs, Helpers.UserAlreadyExists, UserController.createUser);
-userRouter.post('/api/v1/users/signin', Helpers.isValidUserLogi, UserController.login);
+userRouter.post('/api/v1/users/signin', Helpers.isValidUserLogin, UserController.login);
 userRouter.post('/api/v1/users/signout', Helpers.isValidUserLogin, UserController.signout);
 userRouter.post(
   '/api/v1/users/:userId/borrow/:bookId', Helpers.userExists, Helpers.authUser, Helpers.bookExists,
