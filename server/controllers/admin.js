@@ -83,7 +83,8 @@ export default class adminController {
         returnStatus: 'Not Returned',
         dateReturned: req.body.returnDate,
       }))
-      .then(borrowedBook => res.status(200).send(borrowedBook)) // Send back the updated borrowed book.
+      .then(borrowedBook => res.status(200)
+        .send(borrowedBook)) // Send back the updated borrowed book.
       .catch(error => res.status(400).send(error));
   }
 
