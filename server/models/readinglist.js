@@ -1,15 +1,17 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var ReadingList = sequelize.define('ReadingList', {
+  const ReadingList = sequelize.define('ReadingList', {
     userId: DataTypes.INTEGER,
     bookId: DataTypes.INTEGER,
-    target: DataTypes.TEXT
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    target: DataTypes.TEXT,
   });
+
+  ReadingList.associate = (models) => {
+    ReadingList.belongsTo(models.Users, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
+
+
   return ReadingList;
 };

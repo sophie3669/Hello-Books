@@ -72,20 +72,18 @@ export default class adminController {
        */
 
   static acceptBorrowedBooks(req, res) {
-    return BorrowedBooks
+    BorrowedBooks.findOne({
+      where: { bookId: req.params.bookId, userId: req.params.userId },
+    }).then(borrowedBook => borrowedBook
       .update({
-        bookId: req.params.bookId,
-        userId: req.params.userId,
         borrowedDate: req.body.borrowedDate,
         returnDate: req.body.returnDate,
         borrowApproval: 'Approved',
         returnApproval: 'Pending',
         returnStatus: 'Not Returned',
         dateReturned: req.body.returnDate,
-
-
-      })
-      .then(() => res.status(200).send(Books)) // Send back the updated borrowed book.
+      }))
+      .then(borrowedBook => res.status(200).send(borrowedBook)) // Send back the updated borrowed book.
       .catch(error => res.status(400).send(error));
   }
 

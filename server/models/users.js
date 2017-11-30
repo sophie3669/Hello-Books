@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     confirmPassword: DataTypes.STRING,
     role: DataTypes.INTEGER,
+    active: false,
   });
 
   Users.associate = (models) => {
@@ -29,6 +30,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Users.associate = (models) => {
     Users.hasMany(models.Books, {
+      foreignKey: 'userId',
+    });
+  };
+
+  Users.associate = (models) => {
+    Users.hasMany(models.ReadingList, {
       foreignKey: 'userId',
     });
   };
