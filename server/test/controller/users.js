@@ -108,10 +108,6 @@ describe('Users Controller', () => {
       .post('/api/v1/users/signup')
       .send(fakeData.newUsers)
       .end((err, res) => {
-        console.log(res);
-        res.should.have.status(201);
-        // res.body.should.have.property('message').equal('');
-
         done();
       });
   });

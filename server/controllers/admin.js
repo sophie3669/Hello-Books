@@ -97,7 +97,10 @@ export default class adminController {
        */
 
   static acceptReturnedBooks(req, res) {
-    return BorrowedBooks
+    BorrowedBooks.findOne({
+      where: { bookId: req.params.bookId, userId: req.params.userId },
+    }).then(borrowedBook => borrowedBook
+
       .update({
         bookId: req.params.bookId,
         userId: req.params.userId,
@@ -111,7 +114,7 @@ export default class adminController {
 
       })
       .then(() => res.status(200).send(BorrowedBooks)) // Send back the updated borrowed book.
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send(error)));
   }
 }
 

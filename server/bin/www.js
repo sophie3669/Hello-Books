@@ -1,13 +1,13 @@
-const http = require('http');
-const app = require('../app'); // The express app we just created
+import http from 'http';
 
-const db = require('../server/models/index');
-db.sequelize.sync().then(() =>{
+import app from '../app'; // The express app we just created
 
-const port = parseInt(process.env.PORT, 10) || 3000;
-app.set('port', port);
+import db from '../../server/models/index';
 
-const server = http.createServer(app);
-server.listen(port);
+db.sequelize.sync().then(() => {
+  const port = parseInt(process.env.PORT, 10) || 3000;
+  app.set('port', port);
 
+  const server = http.createServer(app);
+  server.listen(port);
 });

@@ -11,6 +11,6 @@ adminRouter.put(
   AdminContoller.modifyBook,
 );
 adminRouter.put('/api/v1/users/:userId/borrow/:bookId', Helpers.adminUserExists, Helpers.authAdmin, AdminContoller.acceptBorrowedBooks);
-adminRouter.put('/api/v1/users/:userId/return/:bookId', Helpers.authAdmin, AdminContoller.acceptReturnedBooks);
+adminRouter.put('/api/v1/users/:userId/return/:bookId', Helpers.adminUserExists, Helpers.authAdmin, AdminContoller.acceptReturnedBooks);
 
 export default adminRouter;
