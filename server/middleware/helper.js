@@ -399,11 +399,15 @@ export default class Helpers {
     const userId = parseInt(req.params.userId, 10);
 
     return Votes
-      .findOne({ where: { bookId, userId, upVotes: 1 } })
+      .findOne({
+        where: {
+          bookId, userId, upVotes: 1, downVotes: 0,
+        },
+      })
       .then((report) => {
         if (report) {
           return res.status(401).send({
-            message: 'you have already upVoted this book before',
+            message: 'you have already upVoted this book before,you cannot vote more than once',
           });
         }
         return next();
@@ -416,11 +420,15 @@ export default class Helpers {
 
 
     return Votes
-      .findOne({ where: { bookId, userId, downVotes: 1 } })
+      .findOne({
+        where: {
+          bookId, userId, upVotes: 0, downVote: 1,
+        },
+      })
       .then((report) => {
         if (report) {
           return res.status(401).send({
-            message: 'you have already downVoted this book before',
+            message: 'you cannot downvote this book more than once',
           });
         }
         return next();

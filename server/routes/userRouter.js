@@ -20,7 +20,7 @@ userRouter.post(
 userRouter.post('/api/v1/users/:userId/return/:bookId', Helpers.ReturnRequest, Helpers.authUser, UserController.returnBook);
 userRouter.post('/api/v1/users/:userId/upVotes/:bookId', Helpers.userExists, Helpers.authUser, Helpers.bookExists, Helpers.userUpvoteExist, VotesController.addupVote);
 userRouter.post('/api/v1/users/:userId/downVotes/:bookId', Helpers.userExists, Helpers.authUser, Helpers.bookExists, Helpers.usersDownvoteExist, VotesController.addDownVote);
-userRouter.get('/api/v1/:userId/searchbyauthor', Helpers.userExists, UserController.searchByAuthor);
+userRouter.post('/api/v1/:userId/searchbyauthor', Helpers.userExists, UserController.searchByAuthor);
 userRouter.post('/api/v1/users/:userId/readinglist/:bookId', Helpers.userExists, Helpers.bookExists, Helpers.isValidreadlistInputs, Helpers.bookInList, UserController.createReadingList);
 
 export default userRouter;
