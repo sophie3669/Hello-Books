@@ -47,10 +47,10 @@ export default class votesController {
       .then(() => {
         Books.findById(req.params.bookId)
           .then(book => book.increment('downVotes', { by: 1 })
-            .then(returnedbook =>
+            .then(votes =>
               res.status(200).send({
                 message: 'downvoted successfully',
-                returnedbook,
+                votes,
               }))
             .catch(err => res.send(err.toString())));
       });

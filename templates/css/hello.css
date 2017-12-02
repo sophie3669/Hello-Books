@@ -8,7 +8,7 @@
 }
 
 .bguserprof{
-  background-color: grey;
+  
   
 
 
@@ -21,12 +21,31 @@
 
 }
 
+.biggercard{
+width: 500px;
+height: 800px;
+border-width: 1px;
+border-color: rgb(15, 15, 15);
+margin-top: 20px;
+}
+
 .carousel-img {
   width: 100%;
   height: auto;
 }
 .center-align{
   text-align: center;
+  
+}
+.center{
+  margin-right: 50px;
+  margin-top: 70px;
+  border-style: solid;
+  padding-left: 150px;
+  padding-top: 10px;
+  border-color: rgb(248, 244, 245);
+  border-width: 1px;
+  
   
 }
 .footer1{
@@ -41,10 +60,10 @@
 .footer{
     position: relative;
     bottom: 0px;
-    width: 100%;
+    width: 120%;
     background-color: #000000;
     color: #000F16;
-    padding: 10px 10px 0px 30px;
+    margin: 30px 10px 0px 0px;
   }
 
   .fntcol{
@@ -62,7 +81,15 @@
   font: 40px arial, sans-serif;
   color: #4B0082;
 }
-
-.spacing{
-  padding-top: 30px;
+.display-3{
+  font: 40px arial, sans-serif;
+  color: rgb(11, 1, 19);
 }
+.custborder{
+ border-style: solid;
+ border-width: 2px;
+ border-top: 30px;
+}
+ .booksholder{
+   margin-bottom: 500px
+ }
