@@ -253,6 +253,15 @@ export default class Helpers {
       });
   }
 
+
+  static emptyReturn(req, res, next) {
+    if (!(Books.length > 1)) {
+      return res.status(401).send({
+        message: 'Sorry no books is available',
+      });
+    }
+    return next();
+  }
   /**
        *  method to check for book quantiy
        * @method validBookQuantityExists

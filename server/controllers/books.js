@@ -18,15 +18,6 @@ export default class bookController {
     }
     Books.findAll(options)
       .then(Book => res.json(Book));
-    if (!(res.length > 1)) {
-      res.status(401).send({
-        message: 'there is no book in the database',
-      });
-
-      res.status(401).send({
-        message: 'successfully retrieved',
-      });
-    }
   }
 
 
