@@ -5,7 +5,7 @@ import Helpers from '../middleware/helper';
 const bookRouter = express.Router();
 
 
-bookRouter.get('/api/v1/books', BookController.getBooks);
+bookRouter.get('/api/v1/books', Helpers.emptyReturn, BookController.getBooks);
 bookRouter.post('/api/v1/users/:userId/review/:bookId', BookController.reviewBook);
 bookRouter.post(
   '/api/v1/users/:userId/fav/:bookId',
